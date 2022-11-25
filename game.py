@@ -5,6 +5,7 @@ A01178154
 import random
 import time
 import math
+import itertools
 
 
 def create_class() -> dict:
@@ -353,6 +354,29 @@ def create_map(board: dict, character: dict):
     for index in range(size):
         all_map = "".join(map_tile[index])
         print(f"{all_map}")
+
+
+def get_direction(board: dict, character: dict) -> str:
+    """
+    Return direction chosen by the user.
+
+    :param board: a dictionary
+    :param character: a dictionary
+    :precondition: a dictionary containing key of tuple representing a set of coordinates and value representing a short
+                   string description
+    :precondition: a dictionary containing character information
+    :postcondition: correct string representing direction user input
+    :return: a string representing direction user input
+    """
+    create_map(board, character)
+    direction_dict = {"1": "North", "2": "East", "3": "South", "4": "West", "5": "Quit"}
+    for num, direction in zip(itertools.count(1), direction_dict.values()):
+        print(num, direction)
+    user_choice = 0
+    while user_choice not in direction_dict:
+        user_choice = input("\n Type number representing direction: ")
+    return direction_dict[user_choice]
+
 # board has tuples and description
 # character = make_character # make dictionary()
 # use enumeration for direction
