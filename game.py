@@ -4,6 +4,7 @@ A01178154
 """
 import random
 import time
+import math
 
 
 def create_class() -> dict:
@@ -321,15 +322,37 @@ def display_boss():
                                   `.',:~::,,,,,,,_~~~~~;;;~~~~~~;<||+;~~~~~~~,:~;;Ta!~~,!;,,,::,'..'''.````...`                                                 
                                        ``.''''''''...........```.,,'```.',:~~~~:_;~=~_,,_',,,,'.''.`````...`                                                    
                                              ````..'''''''''''........``````,~~~~_~~:,,,',','''.`````````        """)
-    time.sleep(3)
-    print("")
-    time.sleep(3)
-    print("")
-    time.sleep(3)
-    print("")
-    time.sleep(3)
-    print("")
-    time.sleep(3)
+
+
+def create_map(board: dict, character: dict):
+    """
+    Display a map showing the current location of the character and boss.
+
+    :param board: a dictionary
+    :param character: a dictionary
+    :precondition: a dictionary containing key of tuple representing a set of coordinates and value representing a short
+                   string description
+    :precondition: a dictionary containing character information
+    :postcondition: map should show the current location of the player and the boss
+    >>> create_map(make_board(5,5), make_character('Justin', 3, 0))
+    [x][ ][ ][ ][ ]
+    [ ][ ][ ][ ][ ]
+    [ ][ ][ ][ ][ ]
+    [ ][ ][ ][ ][ ]
+    [ ][ ][ ][ ][Y]
+    """
+    size = int(math.sqrt(len(board)))
+    map_tile = []
+    for row in range(size):
+        column_list = []
+        for column in range(size):
+            column_list.append("[ ]")
+        map_tile.append(column_list)
+    map_tile[character['Y-coordinate']][character['X-coordinate']] = "[x]"
+    map_tile[size - 1][size - 1] = '[Y]'
+    for index in range(size):
+        all_map = "".join(map_tile[index])
+        print(f"{all_map}")
 # board has tuples and description
 # character = make_character # make dictionary()
 # use enumeration for direction
