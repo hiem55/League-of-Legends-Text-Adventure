@@ -251,7 +251,56 @@ def game_intro():
     :postcondition: print the game introduction and welcome message with correct character name
     """
     #name = character['name']
-    print("""
+    print("""\n``                                                                                            `.``                                                                
+                    <LLi+,                                                   `         ~=  .,~!^~                                                               
+                    `uQkqQs`~`    `+odDZ'                    `^       '` `,,.`````` `;+;^^'`:iz+;!'                     `:;;;;;;;;'                             
+                     .|Ed%gy\v  `*ADY7ndU.               _  ,XT      `,.';'        ~^;;^;*, >*c;|rv                   `;!'  ~!~,``~+,                           
+                     `|\77UQD; ^D5~     ?m`             jDzEQR,     ,~~~~'   .`  ,*;~;^r^;^``~<c\v:                  ,?.  `=<;~,,;: ;+   ;!^^^*+;+~ ,<^'        
+                          zQQQD%!     ~, y,           '75wKND`     'u*xnv?~'~^``!*;~;^=+^!;;  '~.                   `\.  *\~*!` `_r  r;  `''.:,'... '''         
+                          !#QQ8D~    !,^'|~          +5Umqqq;    ';imk|^^^+;*=^*!~,~^++=^!;!,       `````   ``      '?  ,\,;,,`~,i~  ,< .;;!;;~^~^;~r^,         
+                          iSg#m'|   .!<.^t;         ;^IYfvr!^'    >T|7i=r|j}zTi|*||?>++;!;~;^    `,.     ,,'` ``    .c` ~;. `!=~i*`  ;! .''''.,'.'',,,          
+                          ;~8KR*;   `sL'Kd.        `  ^=*<r;;Jz+;;sjoaXwXX}f{\<^;;;~~~~~;;~!*,          :'    ``     ~<`';,,~;|=`   :?.'''''',,''','',,'        
+                           <DL^m`    ``S%;           ,+^>*|TzvcJmdKDWBQN#DUi;```.',;^!!;~;^^!;,,:'`     '`   `.       ,<,``';;,`  .!!``,~~~;,;;~;;~;~~;~        
+                          `6;:`,}L:'~iqS'           `<!r|*^!|swUKbQ@@@@@QR<^^``~\^,.'!+^!;;;;~~~~~~;~~,,`  ``           ';!;~~~;;!~`                            
+                          .d`    ,ifjt~             ,hfi!~;^;;,~*ZQ@@@QQ@N^;<<7q6yyjyyfxz\|+;,,_~~~~~~~~~,,                 ````                                
+                          'E                       `<x~;=!,.^!`.T<7QknzzQ@@@QQQ#RqEoI7Tii\i|^!!;;;;;;;;~~~~~'                                                   
+                           z                     ~z5}7*z!,`~7i7d#B@@QdnXkSyj}ff}szTi??*<+;~;;;;;;;;^^^!;;;~~~;,`                                                
+                           z          `:.``.   ~oEnL*Toi|z}ZqWBNRqhajJ>*vTiii77iL|*<<=+r^!!!;;;~;~;!^^r=^;;!;~;;`                                               
+                           z.   `      '`    'Eqs|=*xJ\vzYY{}}}}Yxz7czmwy}szTi|?**<<<*****=+;!=!=ii\IYItYn7\\*!;~ `;;'                                          
+                           |i    ,`     ````~kyc|iujz*<?|ii||Liiiicv777v\iL|?*****?||i\c+~.~z7nfyyfu{uunziL|oA}5I^` jD7                                         
+                           ,E|    `,'.     zkL+^**+^!;^^r+^^^r^r+++===>>======><*?|\7*;'~LZD6EyyhbK6qDDqqUmfT?i7Lii' ~w`                                        
+                            !zc`     `.'''zyL+^*>^;;;;;;;;;;!!!;;;;;;;;;!!^^++++==^^7*nY|;',*omnZj}fI7|cTtjmwmj7|;.~, `                                         
+                            `;*wr`       `m\+!<>;!=!;~;~~'',~~;;~~~~~~~~~;;;;~~,''',^?r_^^+LNz `7f7*i}|^+;;;^?znyJ~ `:`          ```                            
+                              =^jDJ~     ;\?;^+;~;;;;~~,       `~^!,''''....'',,,'.''~^|z~ .ifv<+7jL!>!;!;;;;!!<iuji` ,`    `,_:~,''                            
+                               <sr^iy5fv*ZZjzvi*Lii*>*~    `.',!|~,,..''''''',,,,''.,,,:;cr     .r!' .|;;;;;~~;, '*Yn~`~ '=|r:_^,,.`   '.                       
+                               `,!Lr~!=*Lzoo5ayooao5oI;;^^^^!;,i;,,:.```....',,~~'`.'',,,~;           ~>;~;!~;:    ;uj<zZS>~~~|!,,`   _^'                       
+                                  ..?`T\,}\|\|=|||L*!.        `!'..'....''...'':,....''''';;,.....'''.~c!;^;!?7T7: `To5{JzJm{z*:`    ,^:'`                      
+                                       ~`'=*!^^;~~;~~.       `~,..,~',;;:~~,'',,,'....''~=77ciLL?*****7\;!!+**L7zz=;+fouTxYjT!'`    ,,<,'`                      
+                                         `~~~~,,,~~~~~~~;r*|*!~'`.';;,~*L<<?*;,,,,''..';}ZwhXmsL***<*?\!^+*?**|\zffz=zyyc|!,`     '~,:^~'`                      
+                                   ` ,',^?*!:,,,,,~~~~~^r++==><;...':;,'~;;;^^;,```...'!*?vJ}jafc||*?*=+!!^+?|LcczfmZUSm~`      ';;~~;!~.                       
+                  `.,,,~~_,.      `=v\+^=**^;~,,,,,:~~~~!+rr^=*;''''',,'`.,,,~~~'..`..',=t|iiYZyzciiL||+^^^^<\77ztuXw6kDSx\|i7`'+^!;<|*,`                       
+                  '~!!;~;;;!^~~;;,~~**!!*??<=^;~,,::,:~~~;r>!~,,''','''''``.',,,,''.',~~:!tj}faf}fyz||*<=+==?\Jt}}}yXkXdSEkXXdY?i*!i7\;.                        
+                    `_;;~,,~~;^r*|~!*^;^*||?*+^!!;~~~~~~_~^;,,,'''',~,'.'...'''',,,''~<~:,~=smXo}ztw7|??***?i7sfjjah6kd6XXhESbi~;~=i|;.                         
+         ,v|;'        `,+*^*7|r!;~;;<;!=*L?||*<=+^!!;;~~~~~,,,::,,',;~,'''.'','',~~;~cL!;^?7fXhy}IznXJ7T\i||LiTzywXUUbdZwwSEqDf<^+<<~.                          
+         `~;;!;,,,`     `,^Ln77v>,;;^>^*?|*|L?*|<<r^^!;;!;_:~~~~;;~,!!~~,'''',''~!i*zaJ*?cIhRNASyjunDmj}}}YJ7z{jammEdD6XwwUqDdv\z{j?'`                          
+          `,;;!!~~^+~'      `.,:,~~^!=*|||?||*|*?*<=++^^;~~~~;!!!!!!~^!~~~_~:,,,;7kEm7||LizDgBDXwmSoSqb6XkwSaamSoom6hAUAAqUdDu|ixjn^!~,'``                      
+           `,!*|!;;!^^;'       `,~~r+*||||iLiiL||LiL|||?!,~;;;!^^!;;;!=!~~~~~;,~LUSYi\ccvzENW8Q%KqqXEmZZaooy5yjaSwZ5aUUAqKKD}**++=r<?<!~~:,'`                   
+            `';7JfJ<=v|^;.    `,;:^<*iiL?i|*|LL\\iiT\i\vi!,;!!!!!!;;;;<+;!!;!Tc?SfstzJJnobQQQQQQQQNgD6ESoyoaSwmZjYjoEkXqqqXT*\v++?|>+!~~!r;.`                   
+             `.,7oXX7?i7L^:`  ';:;!>\7c|i\L|iv\cTiT7cc7zu7;;;^^^^^^^^^<?^^^^+zo}jyyoZmhUqRQQQQB&Q&BQQ8RdAUhwaooooSSSwwkXUu=^+|7?|<+^~,,,~,``                    
+               `.^}fjs?^ivr!''!~_!riu}t7zc\T7\7zT77zszxfyf^*^!^*i\iiL|?L=+=+=7hwEUKDDbkyjaKQQQQNQ#N8gRDdDDDKUkwmmSSSSmyT^^<|*|*^;;~:,',:.`                      
+                 `,<izzi;;^^~!!,~^ijy}xxzzttJzsuss{f}fjoSj*i<zz7iizJ7\ii|+++=Tq%gWBQQgbqqDNQQBQQQBB&gg%dq6UUXhEEwafz|=^^!^=r^;~~~~,',:'`                        
+                  `';<|i*^,,^^,~;imSju}J77vzuIuY{fyjfyy5wyi7=*7fwUwviiiTs=+++L6W%DNQQ@QQQQQQQQQQQgdUwS5juxz7i|*=^!!^^^!!!;;~~:,,,'','``                         
+                    ,'~!!~,!^:~;}Ukofjuzz77IsstsfjyyyaaSEyTJL??TjkDga7tjj\*+=|U8gd%NQQQQQQQQgS7*^!^^^^!!;;;~~~~~~~~~:,::_~,,,,'''''``                           
+                     `..,,!!,~+a6Ukaaju{Yn}jf}uufjyyaaEXE}>{jvfj\|7}fi+}yojnnfKBWbRWBQQQQQ6\!!^<\nj}z\|<^!!;~~_:::,,,:~_,,'''..'.``                             
+                       `'',,~;a6UXa}ajt77Ixuj}}yfjjo5owXw{7jaomEUKDDRDKjooEmSm%BWKd8&QQQZ+!!+\ci*!_,,,,::_~~~~~~;~~_,'''''.....``                               
+                      `''',~;+*7SXEy}j}{s{n{fjjy5SmSwkkmSUqKbbdddbbdDg#gXaojyU#B8d6W#QQ7!!^*!~,,:~~;!!!!!!;;;;!;;~,''''.....``                                  
+                     `;^;,,~;;;^=|7uyyj{Yn}fjyoaSmwhkXUUq6hajI7i?<+^!!^=cjk8QQBQNRX%B#|!!^;,,~!*7i|?|<+^;~~_,,'''''..``..``                                     
+                    `.;!^^;~~:~;;!^r+*Li\7ztY}fjjjj}Izci*=+^^!!;;;;;;;;;;;;;\kQQB%XdNi!;~,,~<zf\^,',,,,,,,,,'''..```````                                        
+                        ``':;^+^;~~~;;;;;;;;!!!!!;;!!!!!;;;~~~~~~~~~~~~~~;;;;;!xWg6Xj;;~,,^ci!,,,,__:,,'''....```````                                           
+                             `'~!=^;~~::~~~~~~;;;;;!^+==<**^;;^***<<+^!;~~:_~~;;^wKw*~~,,^*;,,,:__,''..''..```..``                                              
+                                  `.',:~::,,,,,,,_~~~~~;;;~~~~~~;<||+;~~~~~~~,:~;;Ta!~~,!;,,,::,'..'''.````...`                                                 
+                                       ``.''''''''...........```.,,'```.',:~~~~:_;~=~_,,_',,,,'.''.`````...`                                                    
+                                             ````..'''''''''''........``````,~~~~_~~:,,,',','''.`````````        """)
     time.sleep(3)
     print("")
     time.sleep(3)
