@@ -242,7 +242,7 @@ def make_character(character_name: str, level: int, class_choice: int) -> dict:
     return character
 
 
-def game_intro():
+def game_intro(character: dict):
     """
     Display game introduction on the screen.
 
@@ -250,7 +250,27 @@ def game_intro():
     :precondition: character is a dictionary representing character information
     :postcondition: print the game introduction and welcome message with correct character name
     """
-    #name = character['name']
+    name = character['name']
+    print(f"\n\n\n\n\n\n\n\n\n\n\n Welcome to Runeterra, {name}"
+          "\n\n Here begins your adventure into the depths of the world of League of Legends."
+          "\n Where dreams are crushed and all hope may be lost."
+          "\n But there is always a glimmer of possibility no matter how treacherous the path is.")
+    time.sleep(3)
+    print(f"\n Wake up from your slumber, {name}. You have been sent to this world to save it from the clutches of "
+          "the wicked Yuumi, terrorizing solo queue with her obnoxious behaviour."
+          f"\n Go forth and fulfill your destiny {name}!")
+    print(f"\n\n\n\n {name} was a previous challenger player, but lost all their level from teleporting to this world."
+          f"\n However, {name} feels confident to regain those skills back and find a way to go back to their "
+          f"original world."
+          f"Thus, our new adventurer {name} sets off on their journey into the unknown....")
+
+
+def display_boss():
+    """
+    Display boss ascii art and short intro on the screen.
+
+    :postcondition: print the boss introduction and ascii art on the screen
+    """
     print("""\n``                                                                                            `.``                                                                
                     <LLi+,                                                   `         ~=  .,~!^~                                                               
                     `uQkqQs`~`    `+odDZ'                    `^       '` `,,.`````` `;+;^^'`:iz+;!'                     `:;;;;;;;;'                             
