@@ -6,7 +6,7 @@ import random
 import time
 import math
 import itertools
-
+import sys
 
 def create_class() -> dict:
     """
@@ -251,19 +251,21 @@ def game_intro(character: dict):
     :precondition: character is a dictionary representing character information
     :postcondition: print the game introduction and welcome message with correct character name
     """
-    name = character['name']
+    name = character['Name']
     print(f"\n\n\n\n\n\n\n\n\n\n\n Welcome to Runeterra, {name}"
           "\n\n Here begins your adventure into the depths of the world of League of Legends."
           "\n Where dreams are crushed and all hope may be lost."
           "\n But there is always a glimmer of possibility no matter how treacherous the path is.")
-    time.sleep(3)
+    time.sleep(0)
     print(f"\n Wake up from your slumber, {name}. You have been sent to this world to save it from the clutches of "
           "the wicked Yuumi, terrorizing solo queue with her obnoxious behaviour."
           f"\n Go forth and fulfill your destiny {name}!")
+    time.sleep(0)
     print(f"\n\n\n\n {name} was a previous challenger player, but lost all their level from teleporting to this world."
           f"\n However, {name} feels confident to regain those skills back and find a way to go back to their "
           f"original world."
           f"Thus, our new adventurer {name} sets off on their journey into the unknown....")
+    time.sleep(0)
 
 
 def display_boss():
@@ -366,37 +368,47 @@ def get_direction(board: dict, character: dict) -> str:
     :precondition: a dictionary containing character information
     :postcondition: correct string representing direction user input
     :return: a string representing direction user input
+    >>> get_direction(make_board(2,2), make_character('Justin', 3, 0))
     """
-    create_map(board, character)
+    # create_map(board, character)
     direction_dict = {"1": "North", "2": "East", "3": "South", "4": "West", "5": "Quit"}
     for num, direction in zip(itertools.count(1), direction_dict.values()):
         print(num, direction)
-    user_choice = 0
+    user_choice = "0"
     while user_choice not in direction_dict:
         user_choice = input("\n Type number representing direction: ")
-    return direction_dict[user_choice]
+    return user_choice
 
 
-def validate_move(character: dict, direction: str) -> bool:
+def validate_move(board: dict, character: dict, direction: str) -> bool:
     """
     Determine if the character goes off the board or not.
 
+    :param board: dictionary
     :param character: dictionary
     :param direction: string
+    :precondition: a dictionary containing key of tuple representing a set of coordinates and value representing a short
+                   string description
     :precondition: a dictionary containing character information
     :precondition: a string of either 1, 2, 3, 4 representing North, East, South, West respectively
     :precondition: the character must be on a valid location on the board
     :postcondition: if the character is on the board, and it can travel in its desired direction, return True as Boolean
     :return: a Boolean value representing if character goes off the board or not
+    >>> char = {"X-coordinate": 0, "Y-coordinate": 0}
+    >>> validate_move(make_board(2,2), char, "East")
+    True
+    >>> validate_move(make_board(2,2), char, "North")
+    False
     """
-    rows = 5
-    columns = 5
-    if (direction == '1' and character['Y-coordinate'] == 0) or \
-            (direction == '2' and character['X-coordinate'] == columns - 1) or \
-            (direction == '3' and character['Y-coordinate'] == rows - 1) or \
-            (direction == '4' and character['X-coordinate'] == 0):
-        return False
-    return True
+    if direction == "1":
+        location = (character["X-coordinate"], character["Y-coordinate"] - 1)
+    elif direction == "2":
+        location = (character["X-coordinate"] + 1, character["Y-coordinate"])
+    elif direction == "3":
+        location = (character["X-coordinate"], character["Y-coordinate"] + 1)
+    else:
+        location = (character["X-coordinate"] - 1, character["Y-coordinate"])
+    return location in board
 
 
 def move_character(character: dict, direction: str) -> dict:
@@ -443,7 +455,48 @@ def describe_current_location(board: dict, character: dict):
     """
     x_coordinate = character['X-coordinate']
     y_coordinate = character['Y-coordinate']
-    print(f'You are on coordinate({board[x_coordinate, y_coordinate]})')
+    print(f'You are in ({board[x_coordinate, y_coordinate]})')
+
+
+def not_valid_move(character: dict):
+    """
+    Print message for wrong direction
+
+    :param character: dictionary
+    :precondition: a dictionary containing key of tuple representing a set of coordinates and value representing a short
+                   string description
+    """
+    name = character['Name']
+    print(f"\nSorry {name}, you can't go in that direction. Choose a different direction.")
+
+
+def battle_choice() -> tuple:
+    """
+    Create tuple of battle choice.
+
+    :return: a tuple
+    """
+    return "Attack", "Run Away"
+
+
+def display_command(character: dict):
+    """
+    Print a numbered list of possible battle choices for user.
+
+    :param character: dictionary
+    :precondition: a dictionary containing character information
+    :precondition: the character must be on a valid location on the board
+    :postcondition: print a numbered list of battle choices for user
+    >>> char = make_character('Justin', 1, 0)
+    >>> display_command(char)
+    Justin, enter your next move:
+     [1]. Attack
+     [2]. Run Away
+    """
+    print(f"{character['Name']}, enter your next move: ")
+    for index, choice in enumerate(battle_choice(), 1):
+        print(f" [{index}]. {choice}")
+
 # board has tuples and description
 # character = make_character # make dictionary()
 # use enumeration for direction
@@ -455,40 +508,42 @@ def describe_current_location(board: dict, character: dict):
 # dont use dictionary .get()
 # combat function, does it hit function, initiative
 #
-# def game(): # called from main
-#     rows = 5
-#     columns = 5
-#     board = make_board(rows, columns)
-#     character_name = get_character_name()
-#     character_class = get_character_class()
-#     character = make_character(character_name, 1, character_class)
-#     achieved_goal = False
-#     game_intro(character)
-#     create_map(board, character)
-#     while not achieved_goal:
-#     #Tell the user where they are
-#         describe_current_location(board, character)
-#         direction = get_direction()
-#         if direction == "5":
-#             sys.exit('Quitting the game, your adventure has ended')
-#         valid_move = validate_move(character, direction)
-#         if valid_move:
-#             move_character(character, direction)
-#             describe_current_location(board, character)
-#             there_is_a_challenge = check_for_challenges()
+def game(): # called from main
+    rows = 5
+    columns = 5
+    board = make_board(rows, columns)
+    character_name = get_character_name()
+    character_class = get_character_class()
+    character = make_character(character_name, 1, character_class)
+    achieved_goal = False
+    game_intro(character)
+    create_map(board, character)
+    while not achieved_goal:
+    #Tell the user where they are
+        describe_current_location(board, character)
+        direction = get_direction(board, character)
+        if direction == "5":
+            sys.exit('Quitting the game, your adventure has ended')
+        valid_move = validate_move(board, character, direction)
+        if valid_move:
+            move_character(character, direction)
+            create_map(board, character)
+            # describe_current_location(board, character)
+#             there_is_a_challenge = check_for_enemy()
 #             if there_is_a_challenge:
 #                 execute_challenge_protocol(character)
 #                 if character_has_leveled():
 #                     execute_glow_up_protocol()
 #             achieved_goal = check_if_goal_attained(board, character)
-#         else:
-#              not_valid_move(character)
+        else:
+            create_map(board, character)
+            not_valid_move(character)
 # Tell the user they can’t go in that direction
 # Print end of game stuff like congratulations or sorry you died
 
 
 def main():
-    pass
+    game()
 
 
 if __name__ == "__main__":
