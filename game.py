@@ -165,7 +165,6 @@ def get_character_class():
 
     :postcondition: correctly get the  user choice as an integer
     :return: an integer that represents the user choice for character class
-    >>> get_character_class()
     """
     display_character_class()
     character_choice = int(input("Choose your class as a number: ")) - 1
@@ -377,6 +376,58 @@ def get_direction(board: dict, character: dict) -> str:
         user_choice = input("\n Type number representing direction: ")
     return direction_dict[user_choice]
 
+
+def validate_move(character: dict, direction: str) -> bool:
+    """
+    Determine if the character goes off the board or not.
+
+    :param character: dictionary
+    :param direction: string
+    :precondition: a dictionary containing character information
+    :precondition: a string of either 1, 2, 3, 4 representing North, East, South, West respectively
+    :precondition: the character must be on a valid location on the board
+    :postcondition: if the character is on the board, and it can travel in its desired direction, return True as Boolean
+    :return: a Boolean value representing if character goes off the board or not
+    """
+    rows = 5
+    columns = 5
+    if (direction == '1' and character['Y-coordinate'] == 0) or \
+            (direction == '2' and character['X-coordinate'] == columns - 1) or \
+            (direction == '3' and character['Y-coordinate'] == rows - 1) or \
+            (direction == '4' and character['X-coordinate'] == 0):
+        return False
+    return True
+
+
+def move_character(character: dict, direction: str) -> dict:
+    """
+    Update the character location after direction input.
+
+    :param character: dictionary
+    :param direction: string
+    :precondition: a dictionary containing character information
+    :precondition: a string of either 1, 2, 3, 4 representing North, East, South, West respectively
+    :precondition: the character must be on a valid location on the board
+    :postcondition: correctly update location inside character dictionary after direction input
+    :return: character dictionary with new x and y coordinates
+    >>> input_direction = "3"
+    >>> char = make_character('Justin', 1, 0)
+    >>> char["Y-coordinate"]
+    0
+    >>> move_character(char, input_direction)
+    {'Name': 'Justin', 'Class': "Kog'maw", 'Job': 'Ranger', 'Level': 1, 'Current HP': 65, 'Maximum HP': 65, 'Skill': 'Caustic Spittle', 'Attack': 60, 'Current EXP': 0, 'Maximum EXP': 100, 'X-coordinate': 0, 'Y-coordinate': 1}
+    >>> char["Y-coordinate"]
+    1
+    """
+    if direction == '1':
+        character['Y-coordinate'] -= 1
+    elif direction == '2':
+        character['X-coordinate'] += 1
+    elif direction == '3':
+        character['Y-coordinate'] += 1
+    else:
+        character['X-coordinate'] -= 1
+    return character
 # board has tuples and description
 # character = make_character # make dictionary()
 # use enumeration for direction
@@ -397,7 +448,9 @@ def get_direction(board: dict, character: dict) -> str:
 #     while not achieved_goal:
 #     #Tell the user where they are
 #         describe_current_location(board, character)
-#         direction = get_user_choice( )
+#         direction = get_user_direction( )
+#         if direction == "5":
+#             direction = False
 #         valid_move = validate_move(board, character, direction)
 #         if valid_move:
 #             move_character(character)
@@ -414,7 +467,7 @@ def get_direction(board: dict, character: dict) -> str:
 
 
 def main():
-    game_intro()
+    pass
 
 
 if __name__ == "__main__":
