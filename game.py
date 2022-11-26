@@ -428,6 +428,22 @@ def move_character(character: dict, direction: str) -> dict:
     else:
         character['X-coordinate'] -= 1
     return character
+
+
+def describe_current_location(board: dict, character: dict):
+    """
+    Print the coordinate and description of character's current location.
+
+    :param board: dictionary
+    :param character: dictionary
+    :precondition: a dictionary containing key of tuple representing a set of coordinates and value representing a short
+                   string description
+    :precondition: a dictionary containing character information
+    :postcondition: print the coordinate of character's current location
+    """
+    x_coordinate = character['X-coordinate']
+    y_coordinate = character['Y-coordinate']
+    print(f'You are on coordinate({board[x_coordinate, y_coordinate]})')
 # board has tuples and description
 # character = make_character # make dictionary()
 # use enumeration for direction
@@ -443,17 +459,21 @@ def move_character(character: dict, direction: str) -> dict:
 #     rows = 5
 #     columns = 5
 #     board = make_board(rows, columns)
-#     character = make_character("Player name")
+#     character_name = get_character_name()
+#     character_class = get_character_class()
+#     character = make_character(character_name, 1, character_class)
 #     achieved_goal = False
+#     game_intro(character)
+#     create_map(board, character)
 #     while not achieved_goal:
 #     #Tell the user where they are
 #         describe_current_location(board, character)
-#         direction = get_user_direction( )
+#         direction = get_direction()
 #         if direction == "5":
-#             direction = False
-#         valid_move = validate_move(board, character, direction)
+#             sys.exit('Quitting the game, your adventure has ended')
+#         valid_move = validate_move(character, direction)
 #         if valid_move:
-#             move_character(character)
+#             move_character(character, direction)
 #             describe_current_location(board, character)
 #             there_is_a_challenge = check_for_challenges()
 #             if there_is_a_challenge:
@@ -462,6 +482,7 @@ def move_character(character: dict, direction: str) -> dict:
 #                     execute_glow_up_protocol()
 #             achieved_goal = check_if_goal_attained(board, character)
 #         else:
+#              not_valid_move(character)
 # Tell the user they can’t go in that direction
 # Print end of game stuff like congratulations or sorry you died
 
