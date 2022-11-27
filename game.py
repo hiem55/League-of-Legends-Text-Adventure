@@ -750,6 +750,22 @@ def level_up(character: dict, class_choice: int) -> dict:
     character["Y-coordinate"] = y_coordinate
     return character
 
+
+def check_achieved_goal(character: dict) -> bool:
+    """
+    Check if character reached the boss (bottom right of map).
+
+    :param character: dictionary
+    :precondition: a dictionary containing character information
+    :postcondition: check if character has reached the bottom right of map as a Boolean
+    :return: if character has reached the bottom right of map as a Boolean
+    >>> char = make_character('Justin', 1, 0)
+    >>> char['X-coordinate'] = 5
+    >>> char['Y-coordinate'] = 5
+    >>> check_achieved_goal(make_board(5, 5), char)
+    True
+    """
+    return (character['X-coordinate'], character['Y-coordinate']) == (5, 5)
 # board has tuples and description
 # character = make_character # make dictionary()
 # use enumeration for direction
@@ -788,10 +804,11 @@ def game():  # called from main
                 create_map(board, character)
                 if enough_exp(character):
                     character = level_up(character, character_class)
-        #             achieved_goal = check_if_goal_attained(board, character)
+                achieved_goal = check_achieved_goal(character)
         else:
             create_map(board, character)
             not_valid_move(character)
+    else:
 
 
 # Tell the user they can’t go in that direction
