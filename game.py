@@ -8,6 +8,7 @@ import math
 import itertools
 import sys
 
+
 def create_class() -> dict:
     """
     Create a dictionary of attributes of the four character classes.
@@ -261,7 +262,7 @@ def game_intro(character: dict):
           "the wicked Yuumi, terrorizing solo queue with her obnoxious behaviour."
           f"\n Go forth and fulfill your destiny {name}!")
     time.sleep(0)
-    print(f"\n\n\n\n {name} was a previous challenger player, but lost all their level from teleporting to this world."
+    print(f"\n\n\n\n {name} was a previous CHALLENJOUR player, but lost all their level from teleporting to this world."
           f"\n However, {name} feels confident to regain those skills back and find a way to go back to their "
           f"original world."
           f"Thus, our new adventurer {name} sets off on their journey into the unknown....")
@@ -357,18 +358,12 @@ def create_map(board: dict, character: dict):
         print(f"{all_map}")
 
 
-def get_direction(board: dict, character: dict) -> str:
+def get_direction() -> str:
     """
     Return direction chosen by the user.
 
-    :param board: a dictionary
-    :param character: a dictionary
-    :precondition: a dictionary containing key of tuple representing a set of coordinates and value representing a short
-                   string description
-    :precondition: a dictionary containing character information
     :postcondition: correct string representing direction user input
     :return: a string representing direction user input
-    >>> get_direction(make_board(2,2), make_character('Justin', 3, 0))
     """
     # create_map(board, character)
     direction_dict = {"1": "North", "2": "East", "3": "South", "4": "West", "5": "Quit"}
@@ -463,8 +458,8 @@ def not_valid_move(character: dict):
     Print message for wrong direction
 
     :param character: dictionary
-    :precondition: a dictionary containing key of tuple representing a set of coordinates and value representing a short
-                   string description
+    :precondition: a dictionary containing character information
+    :postcondition: print not valid move statement correctly
     """
     name = character['Name']
     print(f"\nSorry {name}, you can't go in that direction. Choose a different direction.")
@@ -477,6 +472,16 @@ def battle_choice() -> tuple:
     :return: a tuple
     """
     return "Attack", "Run Away"
+
+
+def get_battle_choice() -> int:
+    """
+    Get user selected battle choice.
+
+    :postcondition: return user choice as an integer
+    :return: return correct user choice as an integer
+    """
+    return int(input("What is your choice summoner? : "))
 
 
 def display_command(character: dict):
@@ -497,6 +502,254 @@ def display_command(character: dict):
     for index, choice in enumerate(battle_choice(), 1):
         print(f" [{index}]. {choice}")
 
+
+def check_for_enemies() -> bool:
+    """
+    Determine if player will face an enemy or not as a Boolean value.
+
+    :postcondition: return whether player will face an enemy as a Boolean value
+    :return: if player will face an enemy as a Boolean value
+    """
+    return random.randint(1, 4) == 1
+
+
+def determine_enemy(character: dict) -> dict:
+    """
+    Determine which enemy player will face.
+
+    :param character: dictionary
+    :precondition: a dictionary containing character information
+    :postcondition: enemy will be decided depending on player level
+    :return: the enemy the player will face depending on their level
+    >>> char = make_character('Justin', 1, 0)
+    >>> determine_enemy(char)
+    {'NAME': 'Elise', 'SKILL': 'Neurotoxin', 'HP': 100, 'MAXIMUM_HP': 100, 'ATTACK': 10, 'EXP': 100}
+    """
+    if character["Level"] == 1:
+        return create_enemy()[1]
+    if character["Level"] == 2:
+        return create_enemy()[2]
+    else:
+        return create_enemy()[3]
+
+
+def fight_enemy(character: dict):
+    """
+    Fight enemy until player dies, enemy dies, or player runs away.
+
+    :param character: dictionary
+    :precondition: a dictionary containing character information
+    :postcondition: perform combat portion of the game until player dies, enemy dies, or player runs away
+    """
+    enemy = determine_enemy(character)
+    print(f"\n{enemy['NAME']} has challenged you to a 1 vs 1.")
+    while character_enemy_alive(character, enemy):
+        display_command(character)
+        command = get_battle_choice()
+        if command == 1:
+            battle_round(character, enemy)
+        if command == 2:
+
+
+
+def character_enemy_alive(character: dict, enemy: dict) -> bool:
+    """
+    Determine if character and enemy are both alive.
+
+    :param character: dictionary
+    :param enemy: dictionary
+    :precondition: a dictionary containing character information
+    :precondition: a dictionary containing enemy information
+    :postcondition: if both character and enemy are alive return True, else False
+    :return: whether both character and enemy are alive as a Boolean
+
+    >>> char = make_character('Justin', 1, 0)
+    >>> minion = determine_enemy(char)
+    >>> character_enemy_alive(char, minion)
+    True
+    """
+    return character['Current HP'] > 0 and enemy['HP'] > 0
+
+
+def battle_round(character: dict, enemy: dict):
+    """
+    Print battle description.
+
+    :param character: dictionary
+    :param enemy: dictionary
+    :precondition: a dictionary containing character information
+    :precondition: a dictionary containing enemy information
+    :postcondition: print battle description
+
+    >>> char = make_character('Justin', 1, 0)
+    >>> minion = determine_enemy(char)
+    >>> battle_round(char, minion)
+    <BLANKLINE>
+     Justin uses Caustic Spittle!
+    <BLANKLINE>
+     Elise took 48.0 damage.
+    <BLANKLINE>
+     Elise's new HP is now 52.0.
+    <BLANKLINE>
+     Elise uses Neurotoxin!
+    <BLANKLINE>
+     Justin took 8.0 damage.
+    <BLANKLINE>
+     Justin's new HP is now 56.0.
+    >>> char = make_character('Justin', 1, 0)
+    >>> minion = determine_enemy(char)
+    >>> minion['HP'] = 1
+    >>> battle_round(char, minion)
+    <BLANKLINE>
+     Justin uses Caustic Spittle!
+    <BLANKLINE>
+     Elise took 48.0 damage.
+    <BLANKLINE>
+     Elise fainted.
+     You showed Elise who's the real king of the rift.
+     You earned 100EXP
+     You feel power gathering around you. Congratulations Justin, you leveled up!
+    """
+    print(f"\n {character['Name']} uses {character['Skill']}!")
+    modify_enemy_hp(character, enemy)
+    if enemy['HP'] > 0:
+        print(f"\n {enemy['NAME']}'s new HP is now {enemy['HP']}.")
+    else:
+        print(f"\n {enemy['NAME']} fainted.")
+    if enemy_alive(enemy):
+        print(f"\n {enemy['NAME']} uses {enemy['SKILL']}!")
+        modify_character_hp(character, enemy)
+        print(f"\n {character['Name']}'s new HP is now {character['Current HP']}.")
+    else:
+        earn_exp(character, enemy)
+        if enough_exp(character):
+            print(f" You showed {enemy['NAME']} who's the real king of the rift.\n You earned {enemy['EXP']}EXP")
+            print(f" You feel power gathering around you. Congratulations {character['Name']}, you leveled up!")
+        else:
+            print(f"\n You showed {enemy['NAME']} who's the real king of the rift. \n You earned {enemy['EXP']}EXP")
+
+
+def modify_enemy_hp(character: dict, enemy: dict) -> dict:
+    """
+    Reduce HP of enemy after user attacks enemy.
+
+    :param character: dictionary
+    :param enemy: dictionary
+    :precondition: a dictionary containing character information
+    :precondition: a dictionary containing enemy information
+    :postcondition: correct modification of enemy HP after damage subtracted from enemy current HP
+    :return: reduce enemy hp by amount of character damage
+    >>> char = make_character('Justin', 1, 0)
+    >>> minion = determine_enemy(char)
+    >>> modify_enemy_hp(char, minion)
+    <BLANKLINE>
+     Elise took 48.0 damage.
+    {'NAME': 'Elise', 'SKILL': 'Neurotoxin', 'HP': 52.0, 'MAXIMUM_HP': 100, 'ATTACK': 10, 'EXP': 100}
+    """
+    enemy['HP'] -= (character['Attack'] * 0.8)
+    print(f"\n {enemy['NAME']} took {(character['Attack'] * 0.8)} damage.")
+    return enemy
+
+
+def enemy_alive(enemy: dict) -> bool:
+    """
+    Determine if enemy is alive as a Boolean value.
+
+    :param enemy: dictionary
+    :precondition: a dictionary containing enemy information
+    :postcondition: determine if enemy hp is above 0 or not as a Boolean
+    :return: if enemy is alive or dead as a Boolean value
+    >>> char = make_character('Justin', 1, 0)
+    >>> minion = determine_enemy(char)
+    >>> minion["HP"] = 0
+    >>> enemy_alive(minion)
+    False
+    """
+    return enemy["HP"] > 0
+
+
+def modify_character_hp(character: dict, enemy: dict) -> dict:
+    """
+    Reduce HP of enemy after user attacks enemy.
+
+    :param character: dictionary
+    :param enemy: dictionary
+    :precondition: a dictionary containing character information
+    :precondition: a dictionary containing enemy information
+    :postcondition: correct modification of player HP after damage subtracted from player current HP
+    :return: reduce player hp by amount of enemy damage
+    >>> char = make_character('Justin', 1, 0)
+    >>> minion = determine_enemy(char)
+    >>> modify_character_hp(char, minion)
+    <BLANKLINE>
+     Justin took 8.0 damage.
+    {'Name': 'Justin', 'Class': "Kog'maw", 'Job': 'Ranger', 'Level': 1, 'Current HP': 56.0, 'Maximum HP': 65, 'Skill': 'Caustic Spittle', 'Attack': 60, 'Current EXP': 0, 'Maximum EXP': 100, 'X-coordinate': 0, 'Y-coordinate': 0}
+    """
+    character['Current HP'] -= (enemy['ATTACK'] * 0.9)
+    print(f"\n {character['Name']} took {(enemy['ATTACK'] * 0.8)} damage.")
+    return character
+
+
+def earn_exp(character: dict, enemy: dict) -> dict:
+    """
+    Reduce HP of enemy after user attacks enemy.
+
+    :param character: dictionary
+    :param enemy: dictionary
+    :precondition: a dictionary containing character information
+    :precondition: a dictionary containing enemy information
+    :postcondition: correct modification of player EXP after defeating enemy
+    :return: increase player exp by amount of exp enemy gives
+    >>> char = make_character('Justin', 1, 0)
+    >>> minion = determine_enemy(char)
+    >>> earn_exp(char, minion)
+    {'Name': 'Justin', 'Class': "Kog'maw", 'Job': 'Ranger', 'Level': 1, 'Current HP': 65, 'Maximum HP': 65, 'Skill': 'Caustic Spittle', 'Attack': 60, 'Current EXP': 100, 'Maximum EXP': 100, 'X-coordinate': 0, 'Y-coordinate': 0}
+    """
+    character['Current EXP'] += enemy['EXP']
+    return character
+
+
+def enough_exp(character: dict) -> bool:
+    """
+    Check if character can level up.
+
+    :param character: dictionary
+    :precondition: a dictionary containing character information
+    :postcondition: determine if player can level up or not as a Boolean value
+    :return: increase player exp by amount of exp enemy gives
+    >>> char = make_character('Justin', 1, 0)
+    >>> char["Current EXP"] = 150
+    >>> enough_exp(char)
+    True
+    """
+    return character["Current EXP"] >= character["Maximum EXP"]
+
+
+def level_up(character: dict, class_choice: int) -> dict:
+    """
+    Increase character level by 1 and update new information for character.
+
+    :param character: dictionary
+    :param class_choice: integer
+    :precondition: a dictionary containing character information
+    :precondition: an integer containing user class choice information
+    :postcondition: increase character level by 1 and populate character information with new information relating to
+                    user chosen class
+    :return: updated character information as a dictionary
+    >>> char = make_character('Justin', 1, 0)
+    >>> char["X-coordinate"] = 2
+    >>> char["Y-coordinate"] = 2
+    >>> level_up(char, 0)
+    {'Name': 'Justin', 'Class': "Kog'maw", 'Job': 'SharpShooter', 'Level': 2, 'Current HP': 150, 'Maximum HP': 150, 'Skill': 'Bio-Arcane Barrage', 'Attack': 90, 'Current EXP': 0, 'Maximum EXP': 150, 'X-coordinate': 2, 'Y-coordinate': 2}
+    """
+    x_coordinate = character["X-coordinate"]
+    y_coordinate = character["Y-coordinate"]
+    character = make_character(character["Name"], character["Level"] + 1, class_choice)
+    character["X-coordinate"] = x_coordinate
+    character["Y-coordinate"] = y_coordinate
+    return character
+
+
 # board has tuples and description
 # character = make_character # make dictionary()
 # use enumeration for direction
@@ -508,7 +761,7 @@ def display_command(character: dict):
 # dont use dictionary .get()
 # combat function, does it hit function, initiative
 #
-def game(): # called from main
+def game():  # called from main
     rows = 5
     columns = 5
     board = make_board(rows, columns)
@@ -519,9 +772,9 @@ def game(): # called from main
     game_intro(character)
     create_map(board, character)
     while not achieved_goal:
-    #Tell the user where they are
+        # Tell the user where they are
         describe_current_location(board, character)
-        direction = get_direction(board, character)
+        direction = get_direction()
         if direction == "5":
             sys.exit('Quitting the game, your adventure has ended')
         valid_move = validate_move(board, character, direction)
@@ -529,15 +782,18 @@ def game(): # called from main
             move_character(character, direction)
             create_map(board, character)
             # describe_current_location(board, character)
-#             there_is_a_challenge = check_for_enemy()
-#             if there_is_a_challenge:
-#                 execute_challenge_protocol(character)
-#                 if character_has_leveled():
-#                     execute_glow_up_protocol()
-#             achieved_goal = check_if_goal_attained(board, character)
+            there_is_a_challenge = check_for_enemies()
+            if there_is_a_challenge:
+                fight_enemy(character)
+                if enough_exp(character):
+                    character = level_up(character, character_class)
+                    create_map(board, character)
+        #             achieved_goal = check_if_goal_attained(board, character)
         else:
             create_map(board, character)
             not_valid_move(character)
+
+
 # Tell the user they can’t go in that direction
 # Print end of game stuff like congratulations or sorry you died
 
