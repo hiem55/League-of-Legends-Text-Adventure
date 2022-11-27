@@ -766,6 +766,21 @@ def check_achieved_goal(character: dict) -> bool:
     True
     """
     return (character['X-coordinate'], character['Y-coordinate']) == (5, 5)
+
+
+def character_alive(character: dict) -> bool:
+    """
+    Check if character is alive as a Boolean.
+
+    :param character: dictionary
+    :precondition: a dictionary containing character information
+    :return: if character is alive as a Boolean
+    >>> char = make_character('Justin', 1, 0)
+    >>> char['Current HP'] = 0
+    >>> character_alive(char)
+    False
+    """
+    return character['Current HP'] > 0
 # board has tuples and description
 # character = make_character # make dictionary()
 # use enumeration for direction
@@ -787,7 +802,7 @@ def game():  # called from main
     achieved_goal = False
     game_intro(character)
     create_map(board, character)
-    while not achieved_goal:
+    while not achieved_goal and character_alive(character):
         # Tell the user where they are
         describe_current_location(board, character)
         direction = get_direction()
@@ -808,7 +823,10 @@ def game():  # called from main
         else:
             create_map(board, character)
             not_valid_move(character)
+    if not character_alive(character):
+        sys.exit('You have died, your adventure has ended')
     else:
+        game_outro()
 
 
 # Tell the user they can’t go in that direction
