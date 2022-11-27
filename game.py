@@ -897,7 +897,7 @@ def game_outro(character: dict):
     time.sleep(2)
 
 
-def game():  # called from main
+def game():
     rows = 5
     columns = 5
     board = make_board(rows, columns)
@@ -908,7 +908,6 @@ def game():  # called from main
     game_intro(character)
     create_map(board, character)
     while not achieved_goal:
-        # Tell the user where they are
         describe_current_location(board, character)
         direction = get_direction()
         if direction == "5":
@@ -917,7 +916,6 @@ def game():  # called from main
         if valid_move:
             move_character(character, direction)
             create_map(board, character)
-            # describe_current_location(board, character)
             there_is_a_challenge = check_for_enemies(character)
             if there_is_a_challenge:
                 fight_enemy(character)
@@ -932,10 +930,6 @@ def game():  # called from main
     heal_player(character)
     fight_enemy(character)
     game_outro(character)
-
-
-# Tell the user they can’t go in that direction
-# Print end of game stuff like congratulations or sorry you died
 
 
 def main():
