@@ -114,8 +114,14 @@ def create_enemy() -> dict:
                  "HP": 300,
                  "MAXIMUM_HP": 300,
                  "ATTACK": 20,
-                 "EXP": 200}
-             })
+                 "EXP": 200},
+
+             4: {"NAME": "Yuumi",
+                 "SKILL": "Final Chapter",
+                 "HP": 900,
+                 "MAXIMUM_HP": 900,
+                 "ATTACK": 25,
+                 "EXP": 500}})
 
 
 def create_boss() -> dict:
@@ -248,8 +254,8 @@ def game_intro(character: dict):
     """
     Display game introduction on the screen.
 
-    :param character: a dictionary representing character information
-    :precondition: character is a dictionary representing character information
+    :param character: dictionary
+    :precondition: a dictionary representing character information
     :postcondition: print the game introduction and welcome message with correct character name
     """
     name = character['Name']
@@ -275,6 +281,7 @@ def display_boss():
 
     :postcondition: print the boss introduction and ascii art on the screen
     """
+    print(f"\n Welcome to the final stage summoner. I will terrorize your solo queue games!")
     print("""\n``                                                                                            `.``                                                                
                     <LLi+,                                                   `         ~=  .,~!^~                                                               
                     `uQkqQs`~`    `+odDZ'                    `^       '` `,,.`````` `;+;^^'`:iz+;!'                     `:;;;;;;;;'                             
@@ -529,6 +536,8 @@ def determine_enemy(character: dict) -> dict:
         return create_enemy()[1]
     if character["Level"] == 2:
         return create_enemy()[2]
+    if character["Level"] == 3 and character["X-coordinate"] == 5 and character["Y-coordinate"] == 5:
+        return create_enemy()[4]
     else:
         return create_enemy()[3]
 
@@ -620,7 +629,11 @@ def battle_round(character: dict, enemy: dict):
     if enemy_alive(enemy):
         print(f"\n {enemy['NAME']} uses {enemy['SKILL']}!")
         modify_character_hp(character, enemy)
-        print(f"\n {character['Name']}'s new HP is now {character['Current HP']}.")
+        if not character_alive(character):
+            sys.exit('You have died, your adventure has ended')
+        else:
+            print(f"\n {character['Name']}'s new HP is now {character['Current HP']}.")
+
     else:
         earn_exp(character, enemy)
         if enough_exp(character):
@@ -781,6 +794,29 @@ def character_alive(character: dict) -> bool:
     False
     """
     return character['Current HP'] > 0
+
+
+def game_outro(character: dict):
+    """
+    Display game ending credit on the screen.
+
+    :param character: dictionary
+    :precondition: character is a dictionary representing character information
+    :postcondition: print the game ending and congratulation message with correct character name
+    """
+    name = character['Name']
+    print(f"\n\n\n\n\n\n\n\n\n\n\n You've done it, {name}"
+          "\n\n Here ends your adventure through the world of League of Legends."
+          "\n You've proven that you're better than all those junglers on your team who were holding you back.")
+    time.sleep(0)
+    print(f"\n Thank you {name} for saving this world and defeating Yuumi once and for all. That pesky cat has been "
+          f"terrorizing the rift for far too long and a hero was needed to get rid of her once and for all."
+          f"\n With this we can finally remove Yuumi, {name}! (Delete Yuumi)")
+    time.sleep(0)
+    print(f"\n\n\n\n That was all for now summoner, but we may ask for your help again later..."
+          f" Thank you once again for your help {name}!"
+          f"\n\n\n THE END")
+    time.sleep(0)
 # board has tuples and description
 # character = make_character # make dictionary()
 # use enumeration for direction
@@ -802,7 +838,7 @@ def game():  # called from main
     achieved_goal = False
     game_intro(character)
     create_map(board, character)
-    while not achieved_goal and character_alive(character):
+    while not achieved_goal:
         # Tell the user where they are
         describe_current_location(board, character)
         direction = get_direction()
@@ -819,14 +855,13 @@ def game():  # called from main
                 create_map(board, character)
                 if enough_exp(character):
                     character = level_up(character, character_class)
-                achieved_goal = check_achieved_goal(character)
+            achieved_goal = check_achieved_goal(character)
         else:
             create_map(board, character)
             not_valid_move(character)
-    if not character_alive(character):
-        sys.exit('You have died, your adventure has ended')
-    else:
-        game_outro()
+    display_boss()
+    fight_enemy(character)
+    game_outro(character)
 
 
 # Tell the user they can’t go in that direction
