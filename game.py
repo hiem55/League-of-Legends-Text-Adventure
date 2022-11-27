@@ -263,16 +263,16 @@ def game_intro(character: dict):
           "\n\n Here begins your adventure into the depths of the world of League of Legends."
           "\n Where dreams are crushed and all hope may be lost."
           "\n But there is always a glimmer of possibility no matter how treacherous the path is.")
-    time.sleep(0)
+    time.sleep(2)
     print(f"\n Wake up from your slumber, {name}. You have been sent to this world to save it from the clutches of "
           "the wicked Yuumi, terrorizing solo queue with her obnoxious behaviour."
           f"\n Go forth and fulfill your destiny {name}!")
-    time.sleep(0)
+    time.sleep(2)
     print(f"\n\n\n\n {name} was a previous CHALLENJOUR player, but lost all their level from teleporting to this world."
           f"\n However, {name} feels confident to regain those skills back and find a way to go back to their "
           f"original world."
           f"Thus, our new adventurer {name} sets off on their journey into the unknown....")
-    time.sleep(0)
+    time.sleep(2)
 
 
 def display_boss():
@@ -282,56 +282,98 @@ def display_boss():
     :postcondition: print the boss introduction and ascii art on the screen
     """
     print(f"\n Welcome to the final stage summoner. I will terrorize your solo queue games!")
-    print("""\n``                                                                                            `.``                                                                
-                    <LLi+,                                                   `         ~=  .,~!^~                                                               
-                    `uQkqQs`~`    `+odDZ'                    `^       '` `,,.`````` `;+;^^'`:iz+;!'                     `:;;;;;;;;'                             
-                     .|Ed%gy\v  `*ADY7ndU.               _  ,XT      `,.';'        ~^;;^;*, >*c;|rv                   `;!'  ~!~,``~+,                           
-                     `|\77UQD; ^D5~     ?m`             jDzEQR,     ,~~~~'   .`  ,*;~;^r^;^``~<c\v:                  ,?.  `=<;~,,;: ;+   ;!^^^*+;+~ ,<^'        
-                          zQQQD%!     ~, y,           '75wKND`     'u*xnv?~'~^``!*;~;^=+^!;;  '~.                   `\.  *\~*!` `_r  r;  `''.:,'... '''         
-                          !#QQ8D~    !,^'|~          +5Umqqq;    ';imk|^^^+;*=^*!~,~^++=^!;!,       `````   ``      '?  ,\,;,,`~,i~  ,< .;;!;;~^~^;~r^,         
-                          iSg#m'|   .!<.^t;         ;^IYfvr!^'    >T|7i=r|j}zTi|*||?>++;!;~;^    `,.     ,,'` ``    .c` ~;. `!=~i*`  ;! .''''.,'.'',,,          
-                          ;~8KR*;   `sL'Kd.        `  ^=*<r;;Jz+;;sjoaXwXX}f{\<^;;;~~~~~;;~!*,          :'    ``     ~<`';,,~;|=`   :?.'''''',,''','',,'        
-                           <DL^m`    ``S%;           ,+^>*|TzvcJmdKDWBQN#DUi;```.',;^!!;~;^^!;,,:'`     '`   `.       ,<,``';;,`  .!!``,~~~;,;;~;;~;~~;~        
-                          `6;:`,}L:'~iqS'           `<!r|*^!|swUKbQ@@@@@QR<^^``~\^,.'!+^!;;;;~~~~~~;~~,,`  ``           ';!;~~~;;!~`                            
-                          .d`    ,ifjt~             ,hfi!~;^;;,~*ZQ@@@QQ@N^;<<7q6yyjyyfxz\|+;,,_~~~~~~~~~,,                 ````                                
-                          'E                       `<x~;=!,.^!`.T<7QknzzQ@@@QQQ#RqEoI7Tii\i|^!!;;;;;;;;~~~~~'                                                   
-                           z                     ~z5}7*z!,`~7i7d#B@@QdnXkSyj}ff}szTi??*<+;~;;;;;;;;^^^!;;;~~~;,`                                                
-                           z          `:.``.   ~oEnL*Toi|z}ZqWBNRqhajJ>*vTiii77iL|*<<=+r^!!!;;;~;~;!^^r=^;;!;~;;`                                               
-                           z.   `      '`    'Eqs|=*xJ\vzYY{}}}}Yxz7czmwy}szTi|?**<<<*****=+;!=!=ii\IYItYn7\\*!;~ `;;'                                          
-                           |i    ,`     ````~kyc|iujz*<?|ii||Liiiicv777v\iL|?*****?||i\c+~.~z7nfyyfu{uunziL|oA}5I^` jD7                                         
-                           ,E|    `,'.     zkL+^**+^!;^^r+^^^r^r+++===>>======><*?|\7*;'~LZD6EyyhbK6qDDqqUmfT?i7Lii' ~w`                                        
-                            !zc`     `.'''zyL+^*>^;;;;;;;;;;!!!;;;;;;;;;!!^^++++==^^7*nY|;',*omnZj}fI7|cTtjmwmj7|;.~, `                                         
-                            `;*wr`       `m\+!<>;!=!;~;~~'',~~;;~~~~~~~~~;;;;~~,''',^?r_^^+LNz `7f7*i}|^+;;;^?znyJ~ `:`          ```                            
-                              =^jDJ~     ;\?;^+;~;;;;~~,       `~^!,''''....'',,,'.''~^|z~ .ifv<+7jL!>!;!;;;;!!<iuji` ,`    `,_:~,''                            
-                               <sr^iy5fv*ZZjzvi*Lii*>*~    `.',!|~,,..''''''',,,,''.,,,:;cr     .r!' .|;;;;;~~;, '*Yn~`~ '=|r:_^,,.`   '.                       
-                               `,!Lr~!=*Lzoo5ayooao5oI;;^^^^!;,i;,,:.```....',,~~'`.'',,,~;           ~>;~;!~;:    ;uj<zZS>~~~|!,,`   _^'                       
-                                  ..?`T\,}\|\|=|||L*!.        `!'..'....''...'':,....''''';;,.....'''.~c!;^;!?7T7: `To5{JzJm{z*:`    ,^:'`                      
-                                       ~`'=*!^^;~~;~~.       `~,..,~',;;:~~,'',,,'....''~=77ciLL?*****7\;!!+**L7zz=;+fouTxYjT!'`    ,,<,'`                      
-                                         `~~~~,,,~~~~~~~;r*|*!~'`.';;,~*L<<?*;,,,,''..';}ZwhXmsL***<*?\!^+*?**|\zffz=zyyc|!,`     '~,:^~'`                      
-                                   ` ,',^?*!:,,,,,~~~~~^r++==><;...':;,'~;;;^^;,```...'!*?vJ}jafc||*?*=+!!^+?|LcczfmZUSm~`      ';;~~;!~.                       
-                  `.,,,~~_,.      `=v\+^=**^;~,,,,,:~~~~!+rr^=*;''''',,'`.,,,~~~'..`..',=t|iiYZyzciiL||+^^^^<\77ztuXw6kDSx\|i7`'+^!;<|*,`                       
-                  '~!!;~;;;!^~~;;,~~**!!*??<=^;~,,::,:~~~;r>!~,,''','''''``.',,,,''.',~~:!tj}faf}fyz||*<=+==?\Jt}}}yXkXdSEkXXdY?i*!i7\;.                        
-                    `_;;~,,~~;^r*|~!*^;^*||?*+^!!;~~~~~~_~^;,,,'''',~,'.'...'''',,,''~<~:,~=smXo}ztw7|??***?i7sfjjah6kd6XXhESbi~;~=i|;.                         
-         ,v|;'        `,+*^*7|r!;~;;<;!=*L?||*<=+^!!;;~~~~~,,,::,,',;~,'''.'','',~~;~cL!;^?7fXhy}IznXJ7T\i||LiTzywXUUbdZwwSEqDf<^+<<~.                          
-         `~;;!;,,,`     `,^Ln77v>,;;^>^*?|*|L?*|<<r^^!;;!;_:~~~~;;~,!!~~,'''',''~!i*zaJ*?cIhRNASyjunDmj}}}YJ7z{jammEdD6XwwUqDdv\z{j?'`                          
-          `,;;!!~~^+~'      `.,:,~~^!=*|||?||*|*?*<=++^^;~~~~;!!!!!!~^!~~~_~:,,,;7kEm7||LizDgBDXwmSoSqb6XkwSaamSoom6hAUAAqUdDu|ixjn^!~,'``                      
-           `,!*|!;;!^^;'       `,~~r+*||||iLiiL||LiL|||?!,~;;;!^^!;;;!=!~~~~~;,~LUSYi\ccvzENW8Q%KqqXEmZZaooy5yjaSwZ5aUUAqKKD}**++=r<?<!~~:,'`                   
-            `';7JfJ<=v|^;.    `,;:^<*iiL?i|*|LL\\iiT\i\vi!,;!!!!!!;;;;<+;!!;!Tc?SfstzJJnobQQQQQQQQNgD6ESoyoaSwmZjYjoEkXqqqXT*\v++?|>+!~~!r;.`                   
-             `.,7oXX7?i7L^:`  ';:;!>\7c|i\L|iv\cTiT7cc7zu7;;;^^^^^^^^^<?^^^^+zo}jyyoZmhUqRQQQQB&Q&BQQ8RdAUhwaooooSSSwwkXUu=^+|7?|<+^~,,,~,``                    
-               `.^}fjs?^ivr!''!~_!riu}t7zc\T7\7zT77zszxfyf^*^!^*i\iiL|?L=+=+=7hwEUKDDbkyjaKQQQQNQ#N8gRDdDDDKUkwmmSSSSmyT^^<|*|*^;;~:,',:.`                      
-                 `,<izzi;;^^~!!,~^ijy}xxzzttJzsuss{f}fjoSj*i<zz7iizJ7\ii|+++=Tq%gWBQQgbqqDNQQBQQQBB&gg%dq6UUXhEEwafz|=^^!^=r^;~~~~,',:'`                        
-                  `';<|i*^,,^^,~;imSju}J77vzuIuY{fyjfyy5wyi7=*7fwUwviiiTs=+++L6W%DNQQ@QQQQQQQQQQQgdUwS5juxz7i|*=^!!^^^!!!;;~~:,,,'','``                         
-                    ,'~!!~,!^:~;}Ukofjuzz77IsstsfjyyyaaSEyTJL??TjkDga7tjj\*+=|U8gd%NQQQQQQQQgS7*^!^^^^!!;;;~~~~~~~~~:,::_~,,,,'''''``                           
-                     `..,,!!,~+a6Ukaaju{Yn}jf}uufjyyaaEXE}>{jvfj\|7}fi+}yojnnfKBWbRWBQQQQQ6\!!^<\nj}z\|<^!!;~~_:::,,,:~_,,'''..'.``                             
-                       `'',,~;a6UXa}ajt77Ixuj}}yfjjo5owXw{7jaomEUKDDRDKjooEmSm%BWKd8&QQQZ+!!+\ci*!_,,,,::_~~~~~~;~~_,'''''.....``                               
-                      `''',~;+*7SXEy}j}{s{n{fjjy5SmSwkkmSUqKbbdddbbdDg#gXaojyU#B8d6W#QQ7!!^*!~,,:~~;!!!!!!;;;;!;;~,''''.....``                                  
-                     `;^;,,~;;;^=|7uyyj{Yn}fjyoaSmwhkXUUq6hajI7i?<+^!!^=cjk8QQBQNRX%B#|!!^;,,~!*7i|?|<+^;~~_,,'''''..``..``                                     
-                    `.;!^^;~~:~;;!^r+*Li\7ztY}fjjjj}Izci*=+^^!!;;;;;;;;;;;;;\kQQB%XdNi!;~,,~<zf\^,',,,,,,,,,'''..```````                                        
-                        ``':;^+^;~~~;;;;;;;;!!!!!;;!!!!!;;;~~~~~~~~~~~~~~;;;;;!xWg6Xj;;~,,^ci!,,,,__:,,'''....```````                                           
-                             `'~!=^;~~::~~~~~~;;;;;!^+==<**^;;^***<<+^!;~~:_~~;;^wKw*~~,,^*;,,,:__,''..''..```..``                                              
-                                  `.',:~::,,,,,,,_~~~~~;;;~~~~~~;<||+;~~~~~~~,:~;;Ta!~~,!;,,,::,'..'''.````...`                                                 
-                                       ``.''''''''...........```.,,'```.',:~~~~:_;~=~_,,_',,,,'.''.`````...`                                                    
-                                             ````..'''''''''''........``````,~~~~_~~:,,,',','''.`````````        """)
+    print("""\n
+          ````````                                                                                     
+   ````.':_,'',,'```````````````````````````````````````````````````````````,````````````````````    
+  `.''',~^r!~~~;~''''''''''''''''''''''''...````...``````..``````````````.~==~....,__,,~~;~,'''..``  
+ ``',,,~!!+!+>;~~,,,,,'',,,,,,,^^,,,,,,,,''''.;''''..''''''''''.....'''';Lr~~<~',;;~!+!;;~:,,:,''``  
+ `.,:,:!7L^*zt|+;_~,,,,,_~~~~~!Aj~~_:___:,,'':\',,,,~~,,''''''',,,,''';?L;~;~=\;~_~sj<z7<,;+!;~,'.`  
+ `',~~~^tu*cxi7*;~~____!;;;;;<UQa!;~~~~~~:,,~?:',~+=~,,''''''''''',:;rr;~~;!;;|v;~*K<cEz^~T<=L^:,'`  
+ `':~~~!|J||{x\^~;~~~;7o>^!=f%QQf=;;;;;~~~,;r,'''~~,,',,,,,,'',,,,;**!;~;;!!!;;|*~^a+^^*;~i;!w?_,'`  
+ `'_;;;!i\<=?\+;;;~~;SBQKXKNQBQ&z=^;;;;;;;*^,,~~_,,,',,,,,,,,,,,!|L=~_~;!^r^!;;;<;;^L<^<|=+ia7;_,'`  
+ `'~;;;;=?xz*^;!;;;^zUU6UKNB&BKY*+^!!!!!!}7!~^LL?>!~,::~~~:,,,;|||<~,~;!^+rr^!;;!r;;;!=|IjITr;~:,'`  
+ `'~;;;!r7v<;;!!~;|}y}jakKRW&dJ*+^^^=T!^LR{LLxyjIz7|;~;;;?^~_>z>*+~_~~^!==++^^!;;>;~~~;!!;;;~~,,'.`  
+ `'~;!!!rr!;!!;~^syyjjowKR8&WSi<=++r+J~=7&Ko5T+++=====;,;!;_=<;;~,,~~!^^=^^!^!!;;!^~,:_:_;;~~,,''``  
+ `,~!^!!!^^!;~~<jj5UDEXD6amycL?<>===+i~;+>nhXz;!!;;!=;^L7L?**+^;;~:~;!^+++><^!!;;~+;,,:_~;;~,,':~,.` 
+``,;^^^!!!;;;;LPooKyfojz*^!=|*<**<<<>||+<L?*s\^=!;!=zSojfxzzzz77vciii|?*<=^;;!;;~~+=~,_~;;~~:!!~,.`  
+`.,;<<r^!!;;;Yf><7}r>L|*+^;~~|zi?||?**jkZiLziu7?c7s6j*|L|iL?=;~~~~;;;;;;;;~;;;;~~~+|;,_;!;~~!~,,''`  
+`.,!+==^^!!^=i?|Lac^=<<==^!~~!znJ7JZSma}}ISwfUUkEXdj}yyy}JL*=^^!;;;~~~~~~~~~~;~~~;*|!_~^!;;;~~~:,'`  
+`.,!=>=++=*|Li\\7y=!^==^+=**Lt{}{ykbKw5oEAbD%ggRRWqqUEyi;'`````',~;!!!;;;;~~_~;;^+<^;;~^;~~~~_,,,'`  
+`.,!><<==*|i\cT.uY!;!+<|ic777i|?**|zZR8RRQ#BQQQ#QBRDqj;:^'```.,'```,;!!!!;;;~;;!!!;;;;~r***<^;;_''`` 
+`.:!<*<==*L\c\T\y\;;;*iL**^;!*7jmEX6PhDQQ@@@@@@@@Qgbf~^U|'`` ~<^;,'` '~;!^!!!;;;;;;;;~~~~~~~;;;;;:'` 
+`._^**<>=*Lc7Tzym7+<|*^!;~;<7Ixf5mk6KRNQQ@@@@@@@@Q#U^`!!'`  .foy\;~~'.,r??<r^^;;;;;~~:,,,,,,,,,,,:'` 
+`._^*?**>*Lvz77YAkyi=!;~~!++;:''.'~+zk%QQ@@@@QQ@@@QU_.,=?==?ZAkoIny5SmSZyjuzzz7\|+;~,,,,,,:~~~~~~,`` 
+`'~^*??*<*Lvz775P=;^<*!!!;,`'Yy' ``~;~+d@@QWKUwyaD@@@Q8gNBQQQQQQN%b6kSjYJz7\Lii7zi<^!;;;;!;~~~:,,'.` 
+`'~+|L|?*|L7Ijyqa<~,!<^;~.`,;+'```;{j7~z@Uy*||!|q@@@@QQBNWW%DDKUEZ5jYzviLLiLLL||??*^;!;;;;;;;;;~~,'` 
+`'~+|LiL|LJomaywj<;?z^;_.`';\*~',LkAUXN@@@QDyLIdWRK6XEwSoooo5yfusz7Ti||||***<<^;;!!;;;;;!!!!;;;;;~'` 
+`';*cvT7umkwayxTJ*cyv!;~'`,;|fXd8QQQ@QQQQ#%Dqa7ffnsJzzz777zzJz7v\i|?*<<>===+^;~_~~~~~~;;;~~~;;;;;~'` 
+`';Lx}oUb6m}7|*<?Jwf?=*v{nyPKWBQQQNgRb6Pmjjuti~~!^++=<**|i77ciL|?**<<>==++r^!!!!!;;;;;;~~~~~~;;;~:'` 
+`'!voqDdhf7|=++<//fJLLznjoZEhkXXkXhwmay{tJzv?>?fqD6EafYJ77T\iL|?*<<===++++++++++^!!;!;~~;;;!;;;;;!;,` 
+`'^fKAaYc*++=*zjtcii/v7JJzJJJxssxxzzzzz7TiizyS5yj}Yxzz7TiL|?**<<<<>>>><<<<*****=+*+;;!i^;^^</vci\*;'`
+`,=fyt\|<=*izIu7i||||L//\iLLLLii\////T77zJzzzzz7v\iiLL|??*************?||LLiiTjj==<!<Iv7zzIuzi*+!:.`
+`'~=*<<*|izs{I7|+^!+=***?**<<*******?||LLLL|LLLL||??*<<<<<<<<<****?||LLi\T7t}S6KKqPoSSEoy5aSSa5jYL;'`
+`',~;!!^===r^^!;;!^r++=++r^^^r+++++++==><<>>><<>>====++++=====<<**|LiT7zJfUDR%8N#B###WRbKq6UUXmyfc!,`
+`.,;^r=<*<r^!!^^;;;;;!;;!!!!!!!!!!!!!!!!!!!!!!!!^^^^^^r++++++==<**|L/7j6DNBQQQQQQQQ#RD%RR%DKUwSjI|;'`
+ `'~;!+>+^!;;;;;;;;~~;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;!!^^^^++++++==>+!^{hNQQQQQQB#8WN##Q8dqwfzT777v<_` 
+ `':;<*+^!;;;;;~~~~~;;;;!!!!;;;;;;;~~~~~~~~~~~~~~;;;;!!!^^^^!!;~,'',~Lj{K8B&NB&N##BQ8KEPkAqDdw{T*^~'`
+ `',^=!;;;+|!^;~~;;~~;LjjYJv**=r;;;~~~~~~~~~~~~~~~~~~~~~~,,''``.''''',~!|/nwD8NNNQBgDqqbU6KUo7=^<+~' 
+ `.,;;;~~~;;!;;~~~~~!yXUXXXUXkXEajj}*;<;,'''''''........```.',,,'.'''''~r*|cJumqD%#N8%K6UkhEEaJi*^:` 
+ `.^^;~~~~;;!;;;;;;+ykU6KqAqKbDR%Wgmi^;~,'...........'''',,~~,,''...'.''',;^ifomU66AKbbKbqUPaf?;~!~. 
+ .,;=*>|v|7T|?**L*7UbddDDDDRgWNBBNUL*~',,'..''''''''..'''',,',,,'''..',,,,,,~^iymUUUXXhPEPmyn|;;<<~.`
+`';LzzJxstJzz7c\c7hdD%gNNN#&QQQQBg}>^,'~~'`````........''',,,,,,''.`.''',,_:,,;?yAqAA6UXPSjxTi/tt?;'`
+`'~*z}yoaZSmZZmhaXKbDbbRDDDRRg%%%m*;~'.:~'``````````...''',',~;~,```'''''',,,',;7k66Aqqq6UkkES5j}\;'`
+``,;+i|****??r!;rjmXDhkkkXXUUUUUE7;,,.`',.```.``..'....`..',_~;,`..``.','''''''_!*nwXXXXUA6Xkway{i;'`
+ `,_~~^+r+=<?*^~;jmSwmSSEmmwEhhh}<,''`.''....''.'''''...'''..''``'''.``',''''''_;;!?J}nsJz7vciL|*^:.`
+ `'~!*~__~~~~~~~~z5o55aZZSwEEwwu+,'.`.',~,',:~;~,,,,,,'..'',,,,'.`.''.``',''',;?c\||?*|L|?**<>=+^;,` 
+ ``',,,,:_~~~~~~_*jyyyyyjfux7i*;,..``.',!~,,~!LLi^=<+r<!~'',_;~~,''....`.'',*fmkPwwmS}\**<<<>=+^!~'` 
+ ``',,,,,:_~~~~~~~*|?***?|||?^;~~,```.'',^;,',;>|\<+**<LL=~'.',,,,,'...`.',<z55ySEhkPa}zL***<<=r^;,``
+  `',,,,,,:_~~~~~~~r++===<<<***<*^.....'':;!,.'_;!+^;;+==++;,.``..'''....'~<*?*T}fyoaojIzv|*<<<+!;,. 
+  `'',,,,,,:~~~~~~~~!^^^^r^++^+r+*,.'....''~;~.`',~~;;~;!!;!;,.`````.....''+>***Lc7zzsamys7LL?<+^;,` 
+ ``'',,,,,,,,:~~~~~~~!+++^^^^^+=|='.''''''''',,'```',,,,,:~~:~,'..```....''~<Tn?<*|*i}ma5nz7L|**=;,``
+ `',,',,,,,,,,,:_~~~~~;++==r+=+!^~''''''''.''''''.```.'',',:,,,''''``.'''',,,,75z}n\\JnnuJ7J7ci|*!,. 
+ `':~_,,,,::,,,,,,:~~~~~!+==^;_,,,'''''',,'..'''''.````.','',,,,''''`.'',:_::,_Lyj}}v}ay}xxjyosL>;,` 
+ `'_;;;;~~:,,:_:,,:::_~~~^=!~,'''''''''',~,,'...'''....'''''''',,'''''',;!;,:,,,~?zjwEUXSj5z7z5j|;,` 
+ `'~;;!!!;;;~_~______::_;^;:,,,,,,'''''',~~:,'..''.....'''''..',:,,,,',~<|;~:,,_;^*\\xSkmyfJz7ccff+:. 
+ `,~!!!^^!;;;!;;~~~~~:,~;~,,,,,,,,,,,'''';;~:,''.'''.'''','''.':~,:_~,:+z?!~~~;!+|\z{aEy}nIJz7i\o|~.`
+ `,;^+<<=+^r+^!!;;;;;~;;~,,,,:_~~~~~,,,,';;;~_,,,'''...''',''',~~;!^;_+}z\*!^=?LTx}a6%6wojf{IzTixj;'`
+ `,;r<*==<+^^^!!;;;;;;;;~:,:~~~;~~~;;;~:,:!!;~~::,,'''''',,''',~;=i\^<oo5s?**?izImqRg#qkZyjf}tz7vn^'`
+ `,;+*****===+r+=^!!!;;~~~:_~;;;;;;;;!!!;,;+!;~~~~_,,,,,,',''':;=zy{JEkwz?*??||L7q%%%QKXmo5yyfYJzi+,`
+ `,;=>==|?==+r=^^+^!^;;:~~~~~;;;;^^!!;;!!;~!+!;~~~~______,',',~!\mUE6h{L?||||LLizbR%%QgqXPwSSZyuJ|;,`
+ `,!>*|||||||?|?<**<>;~,,~~~~;;;!!!^^!;;;;;~+=^;~~~~~~~~~~,,,~!?SKXw{L|LLiiiii\zyg8WggQgqUXkXkmynL;'`
+ `,!><***?LiiLLLLLLL|+;_,~;;;;;!!!!^!!;;;;;;;=+!;~~~~~~~;!!,~;<yqyu7ii\\\cTTv7zyqNW%R%gQQgddKUkSj\;'`
+ `,!+<L\i|LLii\L||iLi|=;:,~;;;;;!!!!!!;;;;;;;+<^;;;;;;;~;=z|==sh}Jz777777zzzIjEDNQQB&##BQQQQNRKho7!'`
+ `,!*?|LiLi\i\\LiLTzzz7L;::~!^^!!;!!;;;;;;;;;^|=!!!^!!;;^|IZIzsafn}ff}}{}joEUb8QQQQQQQQQQQ88BQB8%S<,`
+ .:^<|\7cii\\7v\Tiz7zxYt+;;;~;rr^^^!!^!^^^^^^+?|=^^rr^!^r|so}}ffjyyyoaSmEkU66kU#QQQQQQQRRBQ8NgRbUf+,`
+ .:!*i7\L?v|i7v77T7ssfjj*;^=!~;!=***********<<*L*^^+++^^+?smjyyyoSwkUqKbqXZjuIjwRQQQQQQWRNQ#N%DKX}+,`
+``,^|/vv7z7zJJJuJzxxfyyo|^*L<<<!!r?c7zv\\\iL||?L\=^r++rr+?tXUXkUqbRgRDDqEa5yyaomqQQQQQB%WQQNW%DK6f+,`
+`._^L7zzzzzJsuzsnn}}y5ooL<Li=*7c\c=<|Ttxz7v\iiLL7*++^^^+=*zkDDR%g8&QQB%dqUXkPXqdRQQQQggBQQ#NNWRdUY+,`
+`.~<7xu{}fjyjyyyyyjjyaaaL*L\+<vsJfj{7i>|77\iL||LzL=+^++++<7hR%%DD%8BQ@@QB8%%%gWNB#8W#QQQQQQQQB8RKy=,`
+`._=i77uJuujf}Yn}yyj5Soa\\cT+^+izx{oXKbU\LL|LLiit{<^^^+++=cwR%%DbDW#BQQ@QQQQQQQQQQQQQQQQQQQBWbkoY|;'`
+`._>T7zf}fyy5yfyjoo}omaZs}tv|<=*LzfSP6D%bz\7zzz7sS\>^^^^^rLm%%%DqD%8#&QQQQQQQQQQQQQQQQ#qoxi*=^!;~:'` 
+`.~r|\zx}{}}yj}jyoaawEaaL=77|L|*<?i7fmXd8NkzL7nam}zi?<==>*Lo8%%RqdRgW##&QQQQQQQQQQQD5i^;!!!!!!!;;~'` 
+`.~<ivJ}fffj5jya5jmwPXmo>=zz\z77YjIzi|\{5wwj*!?yY}yjsz77zJYE88g%qKD%%N#&BQQQQQQQQ5|!;!!!!r<?Li\c\*~'`
+`._<ctsJIufuyfj5ZmSEPUmf^=YaUm|LfsiL|ivtYIJ7|^is{Zmaooyyyyyh&Ng%KUD%%WBQQQQQQ@Wj=!!!;!+?xymkm}\=;'` 
+`.~<TYj}ufyjyyj5yfaPPPSs<TJ{f}}fymPUqKbdDDRRDdSsja5ywwSaZoSKQ8g%dkd%WgQQBQQQQI^!!;;!*it}uzL=;,,''.`  
+ .~<L7Y}}fj}jyjoaawkk}Sa}yEU66AqKKKKbbbdDDRR%%%SjjfaSS5jyyk%&N%RDhKR8WN&QQQ6^;!!;^<||<!:,,,',,,,,'`` 
+`.~*z{jooSmmSmmmwPEoy5XXqqqqqKKKbbbKqqAAqKdD%W#BRqmjjjn}yhKW#N8RDkkDW8NQQB\;^!;;=?^~,,,,,,~~~;;;;~'` 
+`.~*J{joaZSmwwwwwPkXUU6qqqqqUESyjfYzvi?<>=+=<*LzfEd%g%g8#N%gQ&N%DAwbgN&QB|;^;;^>^,,,,,:~~!+?i7zz7*~'`
+`'~?J}yaSSmmwwwEPkkXXXPajnzc|***<=^!!!!;;;;;;;;;;;;!?u6NQQQQQB#gDKmA%8B#T;!;;^!_,,,,~;>Lz}yv=;~:,,`  
+`.~*znjyoaZZaoyfnJ7TL*+^rr^^!!!!;;;;;;;;;;;;~~~~~;;;;;;!cwNQQQ#WDKmEDgNJ;!;;;~,,,,~^|zI}J*+:,'''..`  
+ `,;+>***<>=r^!!!!!!!!!!!;;;;;;;~~~~~~~~~~~;;;;;;;~~~~;;;~!xdNNgDKwaqRa;;;;~_,,,:!?7ztLr;:''''',''`` 
+ `',~~;;;;;;;;;;;;;;;;~~~~~~~_::,,:::::::,,,,,,:_~~~;~~~~~~~;IbRb6wfE6+~;~~:,',_^L\\+_''''',,,,,,'`  
+  `':_~~~~~~~~~~;;;~~~;;;;;;;;;;;!!!!!!!;;;~~~_,,,,,,,,_~~~~~_~iXUZIos,~~,,'',~+*=~''''',,,,,,,''``  
+  `',,,:_~~~;;;!^^+++==>=^;~:,,~;^+++++r^^^^!;;;~~_,,,,',,_~_~~,!joJIL,,,,,'':!r;''''',,,,,,''.```   
+  `.',,,,,,:,,:_::::__::,,,,,,',,,:~;^^^^^!~_,,,,,,,,,,,,''',___,~iJvr,,,,'',;;,.'.'''',,''````````  
+  ``````......''''''''''''''''''''''',!!;~'''''',,,''',,,,,''',::,,<|~,','.'__'..'''''''.````...``   
+  ```....````````````````````````````.'``````  ```.'',''''','''',,,,;,''''.',.`....'''````...```     
+   ```````````````````````````````````````````````  ``.''''''''''',''''....'.`..`...````.```         
+   ``````````````````````````````````````````````````````'''''''''''''......``.``..`````             
+   `````````````````````````````````````````````````````  `.'.....''''..``````````````               
+    ```````````````````                           ``````    `.``..`....`````````````                 
+       `````````` `                                          ```````````````````````                 
+                                                              `````````````````````                  
+                                                                                                     
+                                                                                                     """)
 
 
 def create_map(board: dict, character: dict):
@@ -372,7 +414,6 @@ def get_direction() -> str:
     :postcondition: correct string representing direction user input
     :return: a string representing direction user input
     """
-    # create_map(board, character)
     direction_dict = {"1": "North", "2": "East", "3": "South", "4": "West", "5": "Quit"}
     for num, direction in zip(itertools.count(1), direction_dict.values()):
         print(num, direction)
@@ -510,14 +551,19 @@ def display_command(character: dict):
         print(f" [{index}]. {choice}")
 
 
-def check_for_enemies() -> bool:
+def check_for_enemies(character: dict) -> bool:
     """
-    Determine if player will face an enemy or not as a Boolean value.
+    Determine if player will face an enemy that is not the boss as a Boolean value.
 
+    :param character: dictionary
+    :precondition: a dictionary containing character information
     :postcondition: return whether player will face an enemy as a Boolean value
-    :return: if player will face an enemy as a Boolean value
+    :return: if player will face an enemy other than boss as a Boolean value
     """
-    return random.randint(1, 3) == 1
+    if (character['X-coordinate'], character['Y-coordinate']) == (4, 4):
+        return False
+    else:
+        return random.randint(1, 3) == 1
 
 
 def determine_enemy(character: dict) -> dict:
@@ -536,7 +582,7 @@ def determine_enemy(character: dict) -> dict:
         return create_enemy()[1]
     if character["Level"] == 2:
         return create_enemy()[2]
-    if character["Level"] == 3 and character["X-coordinate"] == 5 and character["Y-coordinate"] == 5:
+    if character["X-coordinate"] == 4 and character["Y-coordinate"] == 4:
         return create_enemy()[4]
     else:
         return create_enemy()[3]
@@ -558,8 +604,11 @@ def fight_enemy(character: dict):
         if command == 1:
             battle_round(character, enemy)
         if command == 2:
-            print(f"\n {character['Name']} ran away successfully while being called a Bronze noob...")
-            break
+            if enemy['NAME'] == 'Yuumi':
+                print(f"\n {character['Name']}, you can't run away from a boss fight...")
+            else:
+                print(f"\n {character['Name']} ran away successfully while being called a Bronze noob...")
+                break
 
 
 def character_enemy_alive(character: dict, enemy: dict) -> bool:
@@ -778,7 +827,7 @@ def check_achieved_goal(character: dict) -> bool:
     >>> check_achieved_goal(make_board(5, 5), char)
     True
     """
-    return (character['X-coordinate'], character['Y-coordinate']) == (5, 5)
+    return (character['X-coordinate'], character['Y-coordinate']) == (4, 4)
 
 
 def character_alive(character: dict) -> bool:
@@ -796,6 +845,22 @@ def character_alive(character: dict) -> bool:
     return character['Current HP'] > 0
 
 
+def heal_player(character: dict) -> dict:
+    """
+    Restore HP to character before boss battle.
+
+    :param character: dictionary
+    :precondition: a dictionary containing character information
+    :postcondition: character dictionary is modified so that Current HP is set to Max HP
+    :return: Current HP set to Max HP for character before boss battle
+    """
+    character["Current HP"] = character["Maximum HP"]
+    print(f"\n You have been healed to full HP before facing off against Yuumi the treacherous cat.")
+    print("\n Best of luck to you summoner...")
+    time.sleep(2)
+    return character
+
+
 def game_outro(character: dict):
     """
     Display game ending credit on the screen.
@@ -808,26 +873,30 @@ def game_outro(character: dict):
     print(f"\n\n\n\n\n\n\n\n\n\n\n You've done it, {name}"
           "\n\n Here ends your adventure through the world of League of Legends."
           "\n You've proven that you're better than all those junglers on your team who were holding you back.")
-    time.sleep(0)
+    time.sleep(3)
     print(f"\n Thank you {name} for saving this world and defeating Yuumi once and for all. That pesky cat has been "
           f"terrorizing the rift for far too long and a hero was needed to get rid of her once and for all."
           f"\n With this we can finally remove Yuumi, {name}! (Delete Yuumi)")
-    time.sleep(0)
+    time.sleep(3)
+    print("""
+██╗░░░░░███████╗░█████╗░░██████╗░██╗░░░██╗███████╗  ░█████╗░███████╗
+██║░░░░░██╔════╝██╔══██╗██╔════╝░██║░░░██║██╔════╝  ██╔══██╗██╔════╝
+██║░░░░░█████╗░░███████║██║░░██╗░██║░░░██║█████╗░░  ██║░░██║█████╗░░
+██║░░░░░██╔══╝░░██╔══██║██║░░╚██╗██║░░░██║██╔══╝░░  ██║░░██║██╔══╝░░
+███████╗███████╗██║░░██║╚██████╔╝╚██████╔╝███████╗  ╚█████╔╝██║░░░░░
+╚══════╝╚══════╝╚═╝░░╚═╝░╚═════╝░░╚═════╝░╚══════╝  ░╚════╝░╚═╝░░░░░
+
+██╗░░░░░███████╗░██████╗░███████╗███╗░░██╗██████╗░░██████╗
+██║░░░░░██╔════╝██╔════╝░██╔════╝████╗░██║██╔══██╗██╔════╝
+██║░░░░░█████╗░░██║░░██╗░█████╗░░██╔██╗██║██║░░██║╚█████╗░
+██║░░░░░██╔══╝░░██║░░╚██╗██╔══╝░░██║╚████║██║░░██║░╚═══██╗
+███████╗███████╗╚██████╔╝███████╗██║░╚███║██████╔╝██████╔╝""")
     print(f"\n\n\n\n That was all for now summoner, but we may ask for your help again later..."
           f" Thank you once again for your help {name}!"
           f"\n\n\n THE END")
-    time.sleep(0)
-# board has tuples and description
-# character = make_character # make dictionary()
-# use enumeration for direction
-# check for challenges can be a different wording
-# if character is level 1 do easy challenge, if character is level 2 do medium challenge, if character is level 3 do
-# hardest challenge
-# if character levels up, use ascii art
-# 150 x 50 for ascii art
-# dont use dictionary .get()
-# combat function, does it hit function, initiative
-#
+    time.sleep(2)
+
+
 def game():  # called from main
     rows = 5
     columns = 5
@@ -849,7 +918,7 @@ def game():  # called from main
             move_character(character, direction)
             create_map(board, character)
             # describe_current_location(board, character)
-            there_is_a_challenge = check_for_enemies()
+            there_is_a_challenge = check_for_enemies(character)
             if there_is_a_challenge:
                 fight_enemy(character)
                 create_map(board, character)
@@ -860,6 +929,7 @@ def game():  # called from main
             create_map(board, character)
             not_valid_move(character)
     display_boss()
+    heal_player(character)
     fight_enemy(character)
     game_outro(character)
 
