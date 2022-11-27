@@ -510,7 +510,7 @@ def check_for_enemies() -> bool:
     :postcondition: return whether player will face an enemy as a Boolean value
     :return: if player will face an enemy as a Boolean value
     """
-    return random.randint(1, 4) == 1
+    return random.randint(1, 3) == 1
 
 
 def determine_enemy(character: dict) -> dict:
@@ -549,7 +549,8 @@ def fight_enemy(character: dict):
         if command == 1:
             battle_round(character, enemy)
         if command == 2:
-
+            print(f"\n {character['Name']} ran away successfully while being called a Bronze noob...")
+            break
 
 
 def character_enemy_alive(character: dict, enemy: dict) -> bool:
@@ -749,7 +750,6 @@ def level_up(character: dict, class_choice: int) -> dict:
     character["Y-coordinate"] = y_coordinate
     return character
 
-
 # board has tuples and description
 # character = make_character # make dictionary()
 # use enumeration for direction
@@ -785,9 +785,9 @@ def game():  # called from main
             there_is_a_challenge = check_for_enemies()
             if there_is_a_challenge:
                 fight_enemy(character)
+                create_map(board, character)
                 if enough_exp(character):
                     character = level_up(character, character_class)
-                    create_map(board, character)
         #             achieved_goal = check_if_goal_attained(board, character)
         else:
             create_map(board, character)
