@@ -822,9 +822,9 @@ def check_achieved_goal(character: dict) -> bool:
     :postcondition: check if character has reached the bottom right of map as a Boolean
     :return: if character has reached the bottom right of map as a Boolean
     >>> char = make_character('Justin', 1, 0)
-    >>> char['X-coordinate'] = 5
-    >>> char['Y-coordinate'] = 5
-    >>> check_achieved_goal(make_board(5, 5), char)
+    >>> char['X-coordinate'] = 4
+    >>> char['Y-coordinate'] = 4
+    >>> check_achieved_goal(char)
     True
     """
     return (character['X-coordinate'], character['Y-coordinate']) == (4, 4)
