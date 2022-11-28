@@ -159,7 +159,7 @@ def get_character_name() -> str:
     :postcondition: correctly return name of the character
     :return: name of the character as a string
     """
-    print('\nPlease name your character, hero of Runeterra: ')
+    print(f'\nPlease name your character, hero of Runeterra: ')
     character_name = input()
     return character_name
 
@@ -260,12 +260,12 @@ def game_intro(character: dict):
     """
     name = character['Name']
     print(f"\n\n\n\n\n\n\n\n\n\n\n Welcome to Runeterra, {name}"
-          "\n\n Here begins your adventure into the depths of the world of League of Legends."
-          "\n Where dreams are crushed and all hope may be lost."
-          "\n But there is always a glimmer of possibility no matter how treacherous the path is.")
+          f"\n\n Here begins your adventure into the depths of the world of League of Legends."
+          f"\n Where dreams are crushed and all hope may be lost."
+          f"\n But there is always a glimmer of possibility no matter how treacherous the path is.")
     time.sleep(2)
     print(f"\n Wake up from your slumber, {name}. You have been sent to this world to save it from the clutches of "
-          "the wicked Yuumi, terrorizing solo queue with her obnoxious behaviour."
+          f"the wicked Yuumi, terrorizing solo queue with her obnoxious behaviour."
           f"\n Go forth and fulfill your destiny {name}!")
     time.sleep(2)
     print(f"\n\n\n\n {name} was a previous CHALLENJOUR player, but lost all their level from teleporting to this world."
@@ -856,7 +856,7 @@ def heal_player(character: dict) -> dict:
     """
     character["Current HP"] = character["Maximum HP"]
     print(f"\n You have been healed to full HP before facing off against Yuumi the treacherous cat.")
-    print("\n Best of luck to you summoner...")
+    print(f"\n Best of luck to you summoner...")
     time.sleep(2)
     return character
 
@@ -871,8 +871,8 @@ def game_outro(character: dict):
     """
     name = character['Name']
     print(f"\n\n\n\n\n\n\n\n\n\n\n You've done it, {name}"
-          "\n\n Here ends your adventure through the world of League of Legends."
-          "\n You've proven that you're better than all those junglers on your team who were holding you back.")
+          f"\n\n Here ends your adventure through the world of League of Legends."
+          f"\n You've proven that you're better than all those junglers on your team who were holding you back.")
     time.sleep(3)
     print(f"\n Thank you {name} for saving this world and defeating Yuumi once and for all. That pesky cat has been "
           f"terrorizing the rift for far too long and a hero was needed to get rid of her once and for all."
