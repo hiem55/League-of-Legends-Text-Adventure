@@ -124,20 +124,6 @@ def create_enemy() -> dict:
                  "EXP": 500}})
 
 
-def create_boss() -> dict:
-    """
-    Create dictionary of attribute for boss.
-
-    :postcondition: correctly create a dictionary with six key value pair representing information on boss
-    :return: a dictionary
-    """
-    return ({"NAME": "Yuumi",
-             "SKILL": "Final Chapter",
-             "HP": 900,
-             "MAXIMUM_HP": 900,
-             "ATTACK": 25,
-             "EXP": 500})
-
 
 def class_description() -> dict:
     """
