@@ -529,12 +529,12 @@ def display_command(character: dict):
     >>> char = make_character('Justin', 1, 0)
     >>> display_command(char)
     Justin, enter your next move:
-     [1]. Attack
-     [2]. Run Away
+    [1]. Attack
+    [2]. Run Away
     """
-    print(f"{character['Name']}, enter your next move: ")
+    print(f"{character['Name']}, enter your next move:")
     for index, choice in enumerate(battle_choice(), 1):
-        print(f" [{index}]. {choice}")
+        print(f"[{index}]. {choice}")
 
 
 def check_for_enemies(character: dict) -> bool:
@@ -844,6 +844,22 @@ def heal_player(character: dict) -> dict:
     return character
 
 
+def upper_case(name: str) -> str:
+    """
+    Change given string to all upper case.
+
+    :param name: string
+    :precondition: name should be a string that may be empty, representing character name
+    :postcondition: all the string representing character name upper case
+    :return: string that may be empty, representing character name in upper case letters
+    >>> upper_case("Justin")
+    'JUSTIN'
+    >>> upper_case("")
+    ''
+    """
+    return str(name).upper()
+
+
 def game_outro(character: dict):
     """
     Display game ending credit on the screen.
@@ -853,6 +869,8 @@ def game_outro(character: dict):
     :postcondition: print the game ending and congratulation message with correct character name
     """
     name = character['Name']
+    upper_name = list(map(upper_case, name))
+    print(f"{upper_name}!!!")
     print(f"\n\n\n\n\n\n\n\n\n\n\n You've done it, {name}"
           f"\n\n Here ends your adventure through the world of League of Legends."
           f"\n You've proven that you're better than all those junglers on your team who were holding you back.")
