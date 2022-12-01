@@ -124,7 +124,6 @@ def create_enemy() -> dict:
                  "EXP": 500}})
 
 
-
 def class_description() -> dict:
     """
     Create dictionary of class descriptions.
@@ -217,7 +216,7 @@ def make_character(character_name: str, level: int, class_choice: int) -> dict:
     :precondition: class_choice is a positive integer between [0,3]
     :return: a dictionary representing a character
     >>> make_character('Justin', 3, 0)
-    {'Name': 'Justin', 'Class': "Kog'maw", 'Job': 'ADC', 'Level': 3, 'Current HP': 230, 'Maximum HP': 230, 'Skill': 'Living Artillery', 'Attack': 115, 'Current EXP': 0, 'Maximum EXP': 99999, 'X-coordinate': 0, 'Y-coordinate': 0}
+    {'Name': 'Justin', 'Class': "Kog'maw", 'Job': 'ADC', 'Level': 3, 'Current HP': 230, 'Maximum HP': 230, 'Skill': 'Living Artillery', 'Attack': 115, 'Current EXP': 0, 'Maximum EXP': 100000, 'X-coordinate': 0, 'Y-coordinate': 0}
     """
     class_type = list(create_class().keys())[class_choice]
     class_chosen = create_class()[class_type]
@@ -268,6 +267,7 @@ def display_boss():
     :postcondition: print the boss introduction and ascii art on the screen
     """
     print(f"\n Welcome to the final stage summoner. I will terrorize your solo queue games!")
+    time.sleep(1)
     print("""\n
           ````````                                                                                     
    ````.':_,'',,'```````````````````````````````````````````````````````````,````````````````````    
@@ -424,9 +424,9 @@ def validate_move(board: dict, character: dict, direction: str) -> bool:
     :postcondition: if the character is on the board, and it can travel in its desired direction, return True as Boolean
     :return: a Boolean value representing if character goes off the board or not
     >>> char = {"X-coordinate": 0, "Y-coordinate": 0}
-    >>> validate_move(make_board(2,2), char, "East")
+    >>> validate_move(make_board(2,2), char, "2")
     True
-    >>> validate_move(make_board(2,2), char, "North")
+    >>> validate_move(make_board(2,2), char, "1")
     False
     """
     if direction == "1":
@@ -657,6 +657,7 @@ def battle_round(character: dict, enemy: dict):
     """
     print(f"\n {character['Name']} uses {character['Skill']}!")
     modify_enemy_hp(character, enemy)
+    print(f"\n {enemy['NAME']} took {(character['Attack'] * 0.8)} damage.")
     if enemy['HP'] > 0:
         print(f"\n {enemy['NAME']}'s new HP is now {enemy['HP']}.")
     else:
@@ -664,6 +665,7 @@ def battle_round(character: dict, enemy: dict):
     if enemy_alive(enemy):
         print(f"\n {enemy['NAME']} uses {enemy['SKILL']}!")
         modify_character_hp(character, enemy)
+        print(f"\n {character['Name']} took {(enemy['ATTACK'] * 0.8)} damage.")
         if not character_alive(character):
             sys.exit('You have died, your adventure has ended')
         else:
@@ -691,12 +693,9 @@ def modify_enemy_hp(character: dict, enemy: dict) -> dict:
     >>> char = make_character('Justin', 1, 0)
     >>> minion = determine_enemy(char)
     >>> modify_enemy_hp(char, minion)
-    <BLANKLINE>
-     Elise took 48.0 damage.
     {'NAME': 'Elise', 'SKILL': 'Neurotoxin', 'HP': 52.0, 'MAXIMUM_HP': 100, 'ATTACK': 10, 'EXP': 100}
     """
     enemy['HP'] -= (character['Attack'] * 0.8)
-    print(f"\n {enemy['NAME']} took {(character['Attack'] * 0.8)} damage.")
     return enemy
 
 
@@ -730,12 +729,9 @@ def modify_character_hp(character: dict, enemy: dict) -> dict:
     >>> char = make_character('Justin', 1, 0)
     >>> minion = determine_enemy(char)
     >>> modify_character_hp(char, minion)
-    <BLANKLINE>
-     Justin took 8.0 damage.
     {'Name': 'Justin', 'Class': "Kog'maw", 'Job': 'Ranger', 'Level': 1, 'Current HP': 56.0, 'Maximum HP': 65, 'Skill': 'Caustic Spittle', 'Attack': 60, 'Current EXP': 0, 'Maximum EXP': 100, 'X-coordinate': 0, 'Y-coordinate': 0}
     """
     character['Current HP'] -= (enemy['ATTACK'] * 0.9)
-    print(f"\n {character['Name']} took {(enemy['ATTACK'] * 0.8)} damage.")
     return character
 
 
@@ -840,6 +836,7 @@ def heal_player(character: dict) -> dict:
     :postcondition: character dictionary is modified so that Current HP is set to Max HP
     :return: Current HP set to Max HP for character before boss battle
     """
+    time.sleep(2)
     character["Current HP"] = character["Maximum HP"]
     print(f"\n You have been healed to full HP before facing off against Yuumi the treacherous cat.")
     print(f"\n Best of luck to you summoner...")
