@@ -14,8 +14,8 @@ A01178154
 ## Any important comments you'd like to make about your work:
 | Required Elements              | Line #        |
 |--------------------------------|---------------|
-| Tuple                          | 181, 502      |
-| List                           | 383           |
+| Tuple                          | 181           |
+| List                           | 383, 502      |
 | Dictionary /List Comprehension | 204           |
 | If-statement selection         | 463, 567      |
 | repetition with for or while   | 204, 909, 384 |
