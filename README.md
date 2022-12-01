@@ -21,7 +21,7 @@ A01178154
 | repetition with for or while   | 204, 909, 384 |
 | membership operator in         | 407           |
 | range function                 | 204, 384, 391 |
-| itertool function              | 404           |
+| itertools function             | 404           |
 | enumerate function             | 536, 177      |
 | filter or map                  | 870           |
 | random module                  | 204, 552      |
