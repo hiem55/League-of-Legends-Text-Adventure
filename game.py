@@ -499,13 +499,13 @@ def not_valid_move(character: dict):
     print(f"\nSorry {name}, you can't go in that direction. Choose a different direction.")
 
 
-def battle_choice() -> tuple:
+def battle_choice() -> list:
     """
-    Create tuple of battle choice.
+    Create a list of battle choice.
 
-    :return: a tuple
+    :return: a list
     """
-    return "Attack", "Run Away"
+    return ["Attack", "Run Away"]
 
 
 def get_battle_choice() -> int:
