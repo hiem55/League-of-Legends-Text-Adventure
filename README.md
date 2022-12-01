@@ -14,12 +14,12 @@ A01178154
 ## Any important comments you'd like to make about your work:
 | Required Elements              | Line #        |
 |--------------------------------|---------------|
-| Tuple                          | 181           |
+| Tuple                          | 181, 204      |
 | List                           | 383, 502      |
 | Dictionary /List Comprehension | 204           |
 | If-statement selection         | 463, 567      |
-| repetition with for or while   | 204, 909, 384 |
-| membership operator in         | 407           |
+| repetition with for or while   | 384, 204, 909 |
+| membership operator in         | 407, 204, 384 |
 | range function                 | 204, 384, 391 |
 | itertools function             | 404           |
 | enumerate function             | 536, 177      |
