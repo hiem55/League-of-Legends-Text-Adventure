@@ -12,3 +12,16 @@ A01178154
 100002888
 
 ## Any important comments you'd like to make about your work:
+| Required Elements              | Line #        |
+|--------------------------------|---------------|
+| Tuple                          | 181, 502      |
+| List                           | 383           |
+| Dictionary /List Comprehension | 204           |
+| If-statement selection         | 463, 567      |
+| repetition with for or while   | 204, 909, 384 |
+| membership operator in         | 407           |
+| range function                 | 204, 384, 391 |
+| itertool function              | 404           |
+| enumerate function             | 536, 177      |
+| filter or map                  | 870           |
+| random module                  | 204, 552      |
