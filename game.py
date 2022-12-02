@@ -89,7 +89,7 @@ def create_class() -> dict:
 
 def create_enemy() -> dict:
     """
-    Create nested dictionary of attributes of the three enemies.
+    Create nested dictionary of attributes of the three enemies and boss.
 
     :postcondition: correctly create a nested dictionary that contains three key value pairs, value representing
                     information of a specific enemy
