@@ -1,6 +1,6 @@
-COMP 1510 202230
+League of Legends Python based Text Adventure.
 
-A4
+Venture into the world of Runeterra and face off against the accursed boss that tops the ban rates of all time.
 
 ## Your name:
 Justin Oh
